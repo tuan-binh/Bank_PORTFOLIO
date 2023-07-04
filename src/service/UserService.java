@@ -75,7 +75,7 @@ public class UserService implements IService<User, Integer> {
 			return;
 		}
 		user.setStatus(!user.isStatus());
-		IOFiles.writeToFile(listUser, IOFiles.USER_PATH);
+		save(user);
 	}
 	
 	public User login(String username, String password) {

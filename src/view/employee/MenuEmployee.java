@@ -6,6 +6,7 @@ import controller.PresentController;
 import controller.UserController;
 import model.Present;
 import model.Roles;
+import model.Saving;
 import model.User;
 import view.Navbar;
 
@@ -42,7 +43,9 @@ public class MenuEmployee {
 	}
 	
 	public void changeMoneyUser() {
-	
+		System.out.print("Enter ID you want: ");
+		int id = InputMethods.getInteger();
+		userController.changeStatus(id);
 	}
 	
 	public void showInformationUser() {
@@ -68,6 +71,23 @@ public class MenuEmployee {
 	}
 	
 	public void addInterestRateToUser() {
-	
+		System.out.print("Enter ID you want: ");
+		int id = InputMethods.getInteger();
+		User user = userController.findById(id);
+		if(user == null || user.getRoles().equals(Roles.ADMIN) || user.getRoles().equals(Roles.EMPLOYEE)) {
+			System.err.println(Message.YOU_WRONG);
+			return;
+		}
+		showInterestRate();
+		while (true) {
+			System.out.print("Enter ID you want to add: ");
+			int idInterestRate = InputMethods.getInteger();
+			Present interestRate = presentController.findById(idInterestRate);
+			if(interestRate != null) {
+				Saving saving = new Saving();
+				
+			}
+		}
+		
 	}
 }
