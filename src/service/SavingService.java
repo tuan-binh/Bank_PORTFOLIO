@@ -6,7 +6,7 @@ import model.Saving;
 import java.util.List;
 
 public class SavingService {
-	private void save(List<Saving> list, Saving element) {
+	public void save(List<Saving> list, Saving element) {
 		if (findById(list, element.getId()) == null) {
 			list.add(element);
 		} else {
