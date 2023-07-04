@@ -1,0 +1,71 @@
+package view.admin;
+
+import config.InputMethods;
+import controller.PresentController;
+import controller.UserController;
+import model.Roles;
+import model.User;
+import view.Navbar;
+import view.admin.EmployeeManager;
+import view.admin.InterestRateManager;
+import view.admin.MoneyManager;
+import view.admin.UserManager;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MenuAdmin {
+	private static User admin;
+	private static UserController userController;
+	private static PresentController presentController;
+	
+	public MenuAdmin(User user, UserController userController, PresentController presentController) {
+		this.admin = user;
+		this.userController = userController;
+		this.presentController = presentController;
+		while (true) {
+			Navbar.MenuAdmin();
+			System.out.print("Vui lòng chọn: ");
+			int choice = InputMethods.getInteger();
+			System.out.println();
+			switch (choice) {
+				case 1:
+					new EmployeeManager(userController);
+					break;
+				case 2:
+					new UserManager(userController);
+					break;
+				case 3:
+					new MoneyManager(admin);
+					break;
+				case 4:
+					new InterestRateManager(presentController);
+					break;
+				case 5:
+					return;
+				default:
+					System.err.println("Try again 1 to 5");
+					break;
+			}
+		}
+		
+	}
+	
+	public static void showInformation() {
+		Map<Roles, Integer> myList = new HashMap<>();
+		myList.put(Roles.EMPLOYEE, 0);
+		myList.put(Roles.USER, 0);
+		for (Map.Entry<Roles, Integer> entry : myList.entrySet()) {
+			for (User u : userController.getAll()) {
+				if (entry.getKey().equals(u.getRoles())) {
+					entry.setValue(entry.getValue() + 1);
+				}
+			}
+		}
+		for (Map.Entry<Roles, Integer> entry : myList.entrySet()) {
+			System.out.println(" *> " + entry.getKey() + " -> Số Lượng: " + entry.getValue());
+		}
+		System.out.println(" *> CAPITAL FUNDS: " + admin.getMoney());
+	}
+	
+}
