@@ -60,30 +60,40 @@ public class UserInterestRate {
 		if (present == null) {
 			return;
 		}
-		// khởi tạo ngày sau 3 tháng
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.MONTH, present.getLimitMonth());
-		Date newDate = cal.getTime();
-		
-		// khởi tạo đối tượng saving
-		Saving saving = new Saving();
-		saving.setId(savingController.getNewId(data.getList()));
-		System.out.print("Nhập vào số tiền: ");
-		long money = InputMethods.getLong();
-		if (money <= data.getMoney()) {
-			saving.setMoneySaving(money);
-			data.setMoney(data.getMoney() - money);
-		} else {
-			System.err.println(Message.NOT_ENOUGH);
+		while (true) {
+			// khởi tạo ngày sau 3 tháng
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			cal.add(Calendar.MONTH, present.getLimitMonth());
+			Date newDate = cal.getTime();
+			
+			// khởi tạo đối tượng saving
+			Saving saving = new Saving();
+			saving.setId(savingController.getNewId(data.getList()));
+			System.out.print("Nhập vào số tiền: ");
+			long money = InputMethods.getLong();
+			if (money <= data.getMoney()) {
+				System.out.print("Nhập mật khẩu: ");
+				String pass = InputMethods.getString();
+				if (pass.equals(data.getPassword())) {
+					saving.setMoneySaving(money);
+					data.setMoney(data.getMoney() - money);
+					saving.setPresent(present.getPresent());
+					saving.setMonth(present.getLimitMonth());
+					saving.setSentDate(date);
+					saving.setDueDate(newDate);
+					savingController.save(data.getList(), saving);
+					userController.save(data);
+				} else {
+					System.err.println(Message.YOU_WRONG);
+				}
+				break;
+			} else {
+				System.err.println(Message.NOT_ENOUGH);
+			}
+			
 		}
-		saving.setPresent(present.getPresent());
-		saving.setMonth(present.getLimitMonth());
-		saving.setSentDate(date);
-		saving.setDueDate(newDate);
-		savingController.save(data.getList(), saving);
-		userController.save(data);
 	}
 	
 	public void showMyListInterestRate() {
@@ -119,28 +129,49 @@ public class UserInterestRate {
 			System.err.println(Message.NOT_FOUND);
 			return;
 		}
-		System.out.print("Nhập vào số tiền: ");
-		double money = InputMethods.getPositiveLong();
-		long result = 0;
-		if (money < saving.getMoneySaving()) {
-			result = (long) (money + getMoneyAfterSaving(saving.getSentDate(), nowDate, saving));
+		while (true) {
+			System.out.print("Nhập vào số tiền: ");
+			double money = InputMethods.getPositiveLong();
+			System.out.print("Nhập mật khẩu: ");
+			String pass = InputMethods.getString();
+			if (pass.equals(data.getPassword())) {
+				long result = 0;
+				if (money < saving.getMoneySaving()) {
+					result = (long) (money + getMoneyAfterSaving(saving.getSentDate(), nowDate, saving));
+				}
+				if (money == saving.getMoneySaving()) {
+					result = removeSaving(id);
+				}
+				System.out.println(result);
+				data.setMoney(data.getMoney() + result);
+				saving.setMoneySaving((long) (saving.getMoneySaving() - money));
+				savingController.save(data.getList(), saving);
+				userController.save(data);
+				break;
+			} else {
+				System.err.println(Message.YOU_WRONG);
+			}
 		}
-		if (money == saving.getMoneySaving()) {
-			result = removeSaving(id);
-		}
-		System.out.println(result);
-		data.setMoney(data.getMoney() + result);
-		saving.setMoneySaving((long) (saving.getMoneySaving() - money));
-		savingController.save(data.getList(), saving);
-		userController.save(data);
 	}
 	
 	public void minusAll() {
 		System.out.print("Nhập vào ID bạn muốn rút: ");
 		int id = InputMethods.getInteger();
-		long result = removeSaving(id);
-		data.setMoney(data.getMoney() + result);
-		userController.save(data);
+		Saving saving = savingController.findById(data.getList(), id);
+		if (saving != null) {
+			while (true) {
+				System.out.print("Nhập mật khẩu: ");
+				String pass = InputMethods.getString();
+				if (pass.equals(data.getPassword())) {
+					long result = removeSaving(id);
+					data.setMoney(data.getMoney() + result);
+					userController.save(data);
+					break;
+				} else {
+					System.err.println(Message.YOU_WRONG);
+				}
+			}
+		}
 	}
 	
 	public long removeSaving(int id) {
