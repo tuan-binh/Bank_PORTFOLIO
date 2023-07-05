@@ -123,12 +123,15 @@ public class UserInterestRate {
 		double money = InputMethods.getPositiveLong();
 		long result = 0;
 		if (money < saving.getMoneySaving()) {
-			result = getMoneyAfterSaving(saving.getSentDate(), nowDate, saving);
+			result = (long) (money + getMoneyAfterSaving(saving.getSentDate(), nowDate, saving));
 		}
 		if (money == saving.getMoneySaving()) {
 			result = removeSaving(id);
 		}
+		System.out.println(result);
 		data.setMoney(data.getMoney() + result);
+		saving.setMoneySaving((long) (saving.getMoneySaving() - money));
+		savingController.save(data.getList(), saving);
 		userController.save(data);
 	}
 	
