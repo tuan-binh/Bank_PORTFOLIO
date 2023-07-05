@@ -51,6 +51,6 @@ public class Present implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "( ID: " + id + " | presents: " + present + " | Month: " + limitMonth + " )";
+		return "( ID: " + id + " | presents: " + present + " / năm | Month: " + limitMonth + " )";
 	}
 }

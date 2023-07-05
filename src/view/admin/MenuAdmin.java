@@ -66,7 +66,7 @@ public class MenuAdmin {
 		for (Map.Entry<Roles, Integer> entry : myList.entrySet()) {
 			System.out.println(" *> " + entry.getKey() + " -> Số Lượng: " + entry.getValue());
 		}
-		System.out.println(" *> CAPITAL FUNDS: " + admin.getMoney());
+		System.out.println(" *> CAPITAL FUNDS: " + InputMethods.formatNumber().format(admin.getMoney()));
 	}
 	
 }

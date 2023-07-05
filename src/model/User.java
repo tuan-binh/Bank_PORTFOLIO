@@ -117,6 +117,6 @@ public class User implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "[ ID: " + id + " | Name: " + fullName + " | Username: " + username + " | Money: " + money + " | Status: " + (status ? "Unblock" : "Block") + " ]";
+		return "[ ID: " + id + " | Name: " + fullName + " | Username: " + username + " | Money: " + InputMethods.formatNumber().format(money) + " | Status: " + (status ? "Unblock" : "Block") + " ]";
 	}
 }

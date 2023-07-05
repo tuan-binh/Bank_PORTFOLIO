@@ -1,5 +1,6 @@
 package config;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class InputMethods {
@@ -159,5 +160,9 @@ public class InputMethods {
 			}
 			return month;
 		}
+	}
+	
+	public static DecimalFormat formatNumber() {
+		return new DecimalFormat("###,###,###");
 	}
 }

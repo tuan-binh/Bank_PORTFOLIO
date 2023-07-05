@@ -1,10 +1,13 @@
 package model;
 
+import config.InputMethods;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Saving {
+public class Saving implements Serializable {
 	private int id;
-	private double moneySaving;  // số tiền gửi
+	private long moneySaving;  // số tiền gửi
 	private double present;  // phẩn trăm lãi xuất
 	private int month;        // số tháng
 	private Date sentDate; // Ngày gửi
@@ -13,7 +16,7 @@ public class Saving {
 	public Saving() {
 	}
 	
-	public Saving(int id, double moneySaving, double present, int month, Date sentDate, Date dueDate) {
+	public Saving(int id, long moneySaving, double present, int month, Date sentDate, Date dueDate) {
 		this.id = id;
 		this.moneySaving = moneySaving;
 		this.present = present;
@@ -30,11 +33,11 @@ public class Saving {
 		this.id = id;
 	}
 	
-	public double getMoneySaving() {
+	public long getMoneySaving() {
 		return moneySaving;
 	}
 	
-	public void setMoneySaving(double moneySaving) {
+	public void setMoneySaving(long moneySaving) {
 		this.moneySaving = moneySaving;
 	}
 	
@@ -72,6 +75,8 @@ public class Saving {
 	
 	@Override
 	public String toString() {
-		return "( ID: " + id + " | Money: " + moneySaving + " | present: " + present + " | month: " + month + " | sentDate: " + sentDate + " | dueDate: " + dueDate + " )";
+		return "ID: " + id + " | Money: " + InputMethods.formatNumber().format(moneySaving) + " | present: " + present + " / năm | month: " + month +
+				  "\nSentDate: " + sentDate +
+				  "\nDueDate: " + dueDate;
 	}
 }

@@ -142,9 +142,10 @@ public class MenuEmployee {
 				Saving saving = new Saving();
 				saving.setId(savingController.getNewId(user.getList()));
 				System.out.print("Enter money you want: ");
-				double money = InputMethods.getDouble();
+				long money = InputMethods.getLong();
 				if (money <= user.getMoney()) {
 					saving.setMoneySaving(money);
+					user.setMoney((long) (user.getMoney() - money));
 				} else {
 					System.err.println(Message.NOT_ENOUGH);
 				}

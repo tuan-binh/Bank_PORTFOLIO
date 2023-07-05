@@ -10,6 +10,7 @@ import model.User;
 import view.Navbar;
 
 import java.sql.SQLOutput;
+import java.text.DecimalFormat;
 
 public class MenuUser {
 	
@@ -56,10 +57,11 @@ public class MenuUser {
 	}
 	
 	public void showInformation() {
+		
 		System.out.println("╔══════════════════════════════════════════════════════════╗");
 		System.out.printf("║ Name: %50s ║", data.getFullName().toUpperCase());
 		System.out.printf("\n║ Username: %46s ║", data.getUsername());
-		System.out.printf("\n║ Money: %49s ║\n", data.getMoney());
+		System.out.printf("\n║ Money: %49s ║\n", InputMethods.formatNumber().format(data.getMoney()));
 		System.out.println("╚══════════════════════════════════════════════════════════╝");
 	}
 	
@@ -112,10 +114,26 @@ public class MenuUser {
 		newUser.setList(data.getList());
 		newUser.setRoles(data.getRoles());
 		System.out.printf("\nNhập tên mới (tên cũ: %s): ", data.getFullName());
-		newUser.setFullName(InputMethods.getString());
-		System.out.printf("\nNhập username (username cũ: %s): ", data.getUsername());
-		newUser.setUsername(InputMethods.getString());
-		userController.save(newUser);
+		String name = InputMethods.getString();
+		newUser.setFullName(name);
+		data.setFullName(name);
+		boolean check = true;
+		while (true) {
+			System.out.printf("\nNhập username (username cũ: %s): ", data.getUsername());
+			String username = InputMethods.getString();
+			for (User u : userController.getAll()) {
+				if (u.getUsername().equals(username) && !u.getUsername().equals(data.getUsername())) {
+					check = false;
+				}
+			}
+			if (check) {
+				newUser.setUsername(username);
+				userController.save(newUser);
+				break;
+			} else {
+				System.err.println("Tên đã bị trùng");
+			}
+		}
 	}
 	
 	public void changePassword() {

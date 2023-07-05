@@ -17,8 +17,6 @@ public class UserService implements IService<User, Integer> {
 		if (list == null) {
 			list = new ArrayList<>();
 		}
-//        User admin = new User(1, "john", "admin", "123", 12000000, Roles.ADMIN);
-//        list.add(admin);
 		listUser = list;
 	}
 	

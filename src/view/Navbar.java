@@ -93,4 +93,14 @@ public class Navbar {
 		System.out.println("║                                                          ║");
 		System.out.println("╚══════════════════════════════════════════════════════════╝");
 	}
+	
+	public static final void ShowMyInterestRate() {
+		System.out.println("║══════════════════════════ USER ══════════════════════════╗");
+		System.out.println("║                                                          ║");
+		System.out.println("║                1. RÚT TIỀN MỘT PHẦN                      ║");
+		System.out.println("║                2. RÚT TIỀN TOÀN BỘ                       ║");
+		System.out.println("║                0. Quay Lại                               ║");
+		System.out.println("║                                                          ║");
+		System.out.println("╚══════════════════════════════════════════════════════════╝");
+	}
 }
