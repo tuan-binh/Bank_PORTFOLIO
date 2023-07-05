@@ -13,4 +13,5 @@ public class Message {
     public static final String YOU_WRONG = "YOU WRONG...";
     public static final String EMPTY = "Empty...";
     public static final String NOT_ENOUGH = "not enough...";
+    public static final String CHOICE = "Vui lòng chọn: ";
 }

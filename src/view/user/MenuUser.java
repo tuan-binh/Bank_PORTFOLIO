@@ -1,6 +1,159 @@
 package view.user;
 
+import config.InputMethods;
+import config.Message;
+import controller.PresentController;
+import controller.SavingController;
+import controller.UserController;
+import model.Roles;
+import model.User;
+import view.Navbar;
+
+import java.sql.SQLOutput;
+
 public class MenuUser {
-	public MenuUser() {
+	
+	private User data;
+	private UserController userController;
+	private PresentController presentController;
+	private SavingController savingController;
+	
+	public MenuUser(User data, UserController userController, PresentController presentController, SavingController savingController) {
+		this.data = data;
+		this.userController = userController;
+		this.presentController = presentController;
+		this.savingController = savingController;
+		System.out.println();
+		while (true) {
+			showName(data);
+			Navbar.MenuUser();
+			System.out.print(Message.CHOICE);
+			int choice = InputMethods.getInteger();
+			System.out.println();
+			switch (choice) {
+				case 1:
+					showInformation();
+					break;
+				case 2:
+					sentMoneyToUser();
+					break;
+				case 3:
+					new UserInterestRate(data, userController, presentController, savingController);
+					break;
+				case 4:
+					changeInformation();
+					break;
+				case 5:
+					changePassword();
+					break;
+				case 0:
+					return;
+				default:
+					System.err.print("Choice again 0 to 5");
+					break;
+			}
+		}
+	}
+	
+	public void showInformation() {
+		System.out.println("╔══════════════════════════════════════════════════════════╗");
+		System.out.printf("║ Name: %50s ║", data.getFullName().toUpperCase());
+		System.out.printf("\n║ Username: %46s ║", data.getUsername());
+		System.out.printf("\n║ Money: %49s ║\n", data.getMoney());
+		System.out.println("╚══════════════════════════════════════════════════════════╝");
+	}
+	
+	public void sentMoneyToUser() {
+		while (true) {
+			if (data.getMoney() == 0) {
+				System.err.println(Message.NOT_ENOUGH);
+				break;
+			}
+			System.out.print("Nhập vào tên người bạn muốn chuyển đến: ");
+			String username = InputMethods.getString();
+			User check = null;
+			for (User user : userController.getAll()) {
+				if (user.getUsername().equals(username) && user.getRoles().equals(Roles.USER) && !user.getUsername().equals(data.getUsername())) {
+					check = user;
+				}
+			}
+			if (check != null) {
+				while (true) {
+					System.out.print("Nhập số tiền bạn muốn chuyển: ");
+					long money = InputMethods.getPositiveLong();
+					if (money < data.getMoney()) {
+						System.out.print("Nhập mật khẩu: ");
+						String password = InputMethods.getString();
+						if (password.equals(data.getPassword())) {
+							data.setMoney(data.getMoney() - money);
+							check.setMoney(check.getMoney() + money);
+							userController.save(check);
+							userController.save(data);
+						} else {
+							continue;
+						}
+						break;
+					} else {
+						System.err.println(Message.NOT_ENOUGH);
+					}
+				}
+				break;
+			} else {
+				System.err.println(Message.NOT_FOUND);
+			}
+		}
+	}
+	
+	public void changeInformation() {
+		User newUser = new User();
+		newUser.setId(data.getId());
+		newUser.setPassword(data.getPassword());
+		newUser.setMoney(data.getMoney());
+		newUser.setList(data.getList());
+		newUser.setRoles(data.getRoles());
+		System.out.printf("\nNhập tên mới (tên cũ: %s): ", data.getFullName());
+		newUser.setFullName(InputMethods.getString());
+		System.out.printf("\nNhập username (username cũ: %s): ", data.getUsername());
+		newUser.setUsername(InputMethods.getString());
+		userController.save(newUser);
+	}
+	
+	public void changePassword() {
+		User newUser = new User();
+		newUser.setId(data.getId());
+		newUser.setFullName(data.getFullName());
+		newUser.setUsername(data.getUsername());
+		newUser.setMoney(data.getMoney());
+		newUser.setList(data.getList());
+		newUser.setRoles(data.getRoles());
+		while (true) {
+			System.out.print("Nhập vào mật khẩu cũ: ");
+			String oldPassword = InputMethods.getString();
+			if (oldPassword.equals(data.getPassword())) {
+				System.out.print("Nhập mật khẩu mới: ");
+				String newPassword = InputMethods.getString();
+				System.out.print("Xác nhận mật khẩu: ");
+				String confirmPassword = InputMethods.getString();
+				if (newPassword.equals(confirmPassword)) {
+					newUser.setPassword(newPassword);
+					userController.save(newUser);
+				} else {
+					continue;
+				}
+				break;
+			} else {
+				System.err.println(Message.YOU_WRONG);
+			}
+		}
+	}
+	
+	public static void showName(User data) {
+		System.out.print("╔");
+		for (int i = 0; i < data.getFullName().length() + 2; i++) {
+			System.out.print("═");
+		}
+		System.out.print("╗");
+		System.out.println();
+		System.out.printf("║ %s ║\n", data.getFullName().toUpperCase());
 	}
 }

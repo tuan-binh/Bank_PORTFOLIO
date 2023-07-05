@@ -13,7 +13,7 @@ public class InterestRateManager {
 		this.presentController = presentController;
 		while (true) {
 			Navbar.Interest();
-			System.out.print("Vui lòng chọn: ");
+			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
 			System.out.println();
 			switch (choice) {
@@ -29,7 +29,7 @@ public class InterestRateManager {
 				case 4:
 					deleteInterestRate();
 					break;
-				case 5:
+				case 0:
 					return;
 				default:
 					break;

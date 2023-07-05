@@ -16,7 +16,7 @@ public class UserManager {
 		while (true) {
 			MenuAdmin.showInformation();
 			Navbar.User();
-			System.out.print("Vui lòng chọn: ");
+			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
 			System.out.println();
 			switch (choice) {
@@ -29,7 +29,7 @@ public class UserManager {
 				case 3:
 					changeStatusUser();
 					break;
-				case 4:
+				case 0:
 					return;
 				default:
 					System.err.println("Try again 1 to 4");

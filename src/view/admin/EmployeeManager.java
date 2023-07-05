@@ -15,7 +15,7 @@ public class EmployeeManager {
 		while (true) {
 			MenuAdmin.showInformation();
 			Navbar.Employee();
-			System.out.print("Vui lòng chọn: ");
+			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
 			System.out.println();
 			switch (choice) {
@@ -34,7 +34,7 @@ public class EmployeeManager {
 				case 5:
 					showListEmployees();
 					break;
-				case 6:
+				case 0:
 					return;
 				default:
 					System.err.println("Try again 1 to 6");

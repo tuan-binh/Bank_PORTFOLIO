@@ -1,6 +1,7 @@
 package view.admin;
 
 import config.InputMethods;
+import config.Message;
 import controller.PresentController;
 import controller.UserController;
 import model.Roles;
@@ -25,7 +26,7 @@ public class MenuAdmin {
 		this.presentController = presentController;
 		while (true) {
 			Navbar.MenuAdmin();
-			System.out.print("Vui lòng chọn: ");
+			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
 			System.out.println();
 			switch (choice) {
@@ -41,7 +42,7 @@ public class MenuAdmin {
 				case 4:
 					new InterestRateManager(presentController);
 					break;
-				case 5:
+				case 0:
 					return;
 				default:
 					System.err.println("Try again 1 to 5");

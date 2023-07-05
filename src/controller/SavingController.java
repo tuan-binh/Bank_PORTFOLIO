@@ -10,7 +10,7 @@ public class SavingController {
 
     private SavingService savingService = new SavingService();
 
-    private void save(List<Saving> list, Saving element) {
+    public void save(List<Saving> list, Saving element) {
         savingService.save(list, element);
     }
 

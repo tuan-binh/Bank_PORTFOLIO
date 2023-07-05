@@ -13,7 +13,7 @@ public class MoneyManager {
 		while (true) {
 			MenuAdmin.showInformation();
 			Navbar.Money();
-			System.out.print("Vui lòng chọn: ");
+			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
 			System.out.println();
 			switch (choice) {
@@ -23,7 +23,7 @@ public class MoneyManager {
 				case 2:
 					minusCapitalFunds();
 					break;
-				case 3:
+				case 0:
 					return;
 				default:
 					break;
