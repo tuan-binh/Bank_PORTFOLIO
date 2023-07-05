@@ -145,7 +145,7 @@ public class InputMethods {
 	public static double getPresent() {
 		while (true) {
 			double result = getDouble();
-			if (result < 0 || result > 1) {
+			if (result < 0 || result > 10) {
 				continue;
 			}
 			return result;

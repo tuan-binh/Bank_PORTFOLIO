@@ -43,14 +43,14 @@ public class Present implements Serializable {
 	}
 	
 	public void inputData() {
-		System.out.print("Enter present: ");
+		System.out.print("Nhập phần trăm (1 đến 10): ");
 		this.present = InputMethods.getPresent();
-		System.out.print("Enter Month: ");
+		System.out.print("Nhập tháng: ");
 		this.limitMonth = InputMethods.getMonth();
 	}
 	
 	@Override
 	public String toString() {
-		return "( ID: " + id + " | presents: " + present + " / năm | Month: " + limitMonth + " )";
+		return "( ID: " + id + " | presents: " + present + "% / năm | Month: " + limitMonth + " )";
 	}
 }

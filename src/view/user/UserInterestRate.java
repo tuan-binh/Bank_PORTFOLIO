@@ -111,6 +111,7 @@ public class UserInterestRate {
 	}
 	
 	public void minusAPart() {
+		Date nowDate = new Date();
 		System.out.print("Nhập vào ID bạn muốn rút: ");
 		int id = InputMethods.getInteger();
 		Saving saving = savingController.findById(data.getList(), id);
@@ -120,27 +121,44 @@ public class UserInterestRate {
 		}
 		System.out.print("Nhập vào số tiền: ");
 		double money = InputMethods.getPositiveLong();
+		long result = 0;
 		if (money < saving.getMoneySaving()) {
-		
+			result = getMoneyAfterSaving(saving.getSentDate(), nowDate, saving);
 		}
 		if (money == saving.getMoneySaving()) {
-		
+			result = removeSaving(id);
 		}
+		data.setMoney(data.getMoney() + result);
+		userController.save(data);
 	}
 	
 	public void minusAll() {
-	
+		System.out.print("Nhập vào ID bạn muốn rút: ");
+		int id = InputMethods.getInteger();
+		long result = removeSaving(id);
+		data.setMoney(data.getMoney() + result);
+		userController.save(data);
 	}
 	
 	public long removeSaving(int id) {
-		return 0;
+		Saving saving = savingController.findById(data.getList(), id);
+		long result = getMoneyAfterSaving(saving.getSentDate(), saving.getDueDate(), saving);
+		savingController.delete(data.getList(), id);
+		return result;
 	}
 	
-	public long getMoneyAfterSaving(Date date1, Date date2) {
+	public long getMoneyAfterSaving(Date date1, Date date2, Saving saving) {
 		long result = 0;
-		long dayDiff = date2.getTime() - date1.getTime();
-		long day = dayDiff / (24 * 60 * 60 * 1000);
-//		if(month)
+		try {
+			long dayDiff = date2.getTime() - date1.getTime();
+			long day = dayDiff / (24 * 60 * 60 * 1000);
+			if (day == 0) {
+				result = saving.getMoneySaving();
+			}
+			result = (long) (saving.getMoneySaving() * (saving.getPresent() / 365) * day);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
