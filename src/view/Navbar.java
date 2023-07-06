@@ -57,7 +57,7 @@ public class Navbar {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MANAGER INTEREST ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃            " + PURPLE + "1. HIỂN THỊ LÃI XUẤT                   2. THÊM LÃI XUẤT MỚI             " + BLUE + "┃");
-		System.out.println("┃            " + PURPLE + "3. THAY ĐỔI LÃI XUẤT                  4. XÓA LÃI XUẤT                   " + BLUE + "┃");
+		System.out.println("┃            " + PURPLE + "3. THAY ĐỔI LÃI XUẤT                   4. XÓA LÃI XUẤT                  " + BLUE + "┃");
 		System.out.println("┃            " + PURPLE + "0. TRỞ LẠI                                                              " + BLUE + "┃");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -118,7 +118,7 @@ public class Navbar {
 		System.out.println("┃       ( 3 ) 1.000.000       ┃     ( 4 ) 2.000.000        ┃");
 		System.out.println("┃                             ┃                            ┃");
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-		System.out.println("┃                     ( 5 ) Thoát                          ┃");
+		System.out.println("┃                     ( 0 ) Thoát                          ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	

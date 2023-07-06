@@ -2,6 +2,7 @@ package view.admin;
 
 import config.InputMethods;
 import config.Message;
+import config.Validate;
 import controller.UserController;
 import model.Roles;
 import model.User;
@@ -48,12 +49,20 @@ public class EmployeeManager {
 		employee.setId(userController.getNewId());
 		employee.inputData();
 		employee.setRoles(Roles.EMPLOYEE);
-		boolean check = userController.register(employee.getUsername());
-		if (check) {
-			userController.save(employee);
-			System.out.println(Message.REGISTER_SUCCESS);
+		if (Validate.username(employee.getUsername())) {
+			if (Validate.password(employee.getPassword())) {
+				boolean check = userController.register(employee.getUsername());
+				if (check) {
+					userController.save(employee);
+					System.out.println(Message.REGISTER_SUCCESS);
+				} else {
+					System.err.println(Message.REGISTER_FAILED);
+				}
+			} else {
+				System.err.println(Message.YOU_WRONG);
+			}
 		} else {
-			System.err.println(Message.REGISTER_FAILED);
+			System.err.println(Message.YOU_WRONG);
 		}
 	}
 	

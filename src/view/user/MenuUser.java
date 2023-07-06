@@ -100,6 +100,9 @@ public class MenuUser {
 						if (password.equals(data.getPassword())) {
 							data.setMoney(data.getMoney() - money);
 							check.setMoney(check.getMoney() + money);
+							// khởi tạo đối tượng lịch sử
+							
+							// lưu đối tượng
 							userController.save(check);
 							userController.save(data);
 						} else {
@@ -117,8 +120,11 @@ public class MenuUser {
 		}
 	}
 	
+	
+	
 	public void deposit() {
 		while (true) {
+			showName(data);
 			Navbar.showDeposit();
 			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
@@ -211,7 +217,7 @@ public class MenuUser {
 	}
 	
 	public static void showName(User data) {
-		System.out.print("┏");
+		System.out.print(BLUE + "┏");
 		for (int i = 0; i < data.getFullName().length() + 2; i++) {
 			System.out.print("━");
 		}

@@ -15,6 +15,8 @@ import view.admin.UserManager;
 import java.util.HashMap;
 import java.util.Map;
 
+import static config.ColorConsole.*;
+
 public class MenuAdmin {
 	private static User admin;
 	private static UserController userController;
@@ -66,7 +68,7 @@ public class MenuAdmin {
 			}
 		}
 		for (Map.Entry<Roles, Integer> entry : myList.entrySet()) {
-			System.out.println(" *> " + entry.getKey() + " -> Số Lượng: " + entry.getValue());
+			System.out.println(BLUE+" *> " + entry.getKey() + " -> Số Lượng: " + entry.getValue());
 		}
 		System.out.println(" *> CAPITAL FUNDS: " + InputMethods.formatNumber().format(admin.getMoney()));
 	}
