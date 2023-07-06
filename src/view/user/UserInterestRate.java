@@ -73,6 +73,10 @@ public class UserInterestRate {
 			saving.setId(savingController.getNewId(data.getList()));
 			System.out.print("Nhập vào số tiền: ");
 			long money = InputMethods.getLong();
+			if (money == 0) {
+				System.err.println(Message.YOU_WRONG);
+				break;
+			}
 			if (money <= data.getMoney()) {
 				System.out.print("Nhập mật khẩu: ");
 				String pass = InputMethods.getString();
@@ -132,6 +136,10 @@ public class UserInterestRate {
 		while (true) {
 			System.out.print("Nhập vào số tiền: ");
 			double money = InputMethods.getPositiveLong();
+			if (money == 0) {
+				System.err.println(Message.YOU_WRONG);
+				break;
+			}
 			System.out.print("Nhập mật khẩu: ");
 			String pass = InputMethods.getString();
 			if (pass.equals(data.getPassword())) {
