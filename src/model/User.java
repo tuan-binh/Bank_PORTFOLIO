@@ -109,9 +109,9 @@ public class User implements Serializable {
 	public void inputData() {
 		System.out.print("Nhập tên của bạn: ");
 		this.fullName = InputMethods.getString();
-		System.out.print("Nhập tên đăng nhập của bạn: ");
+		System.out.print("Nhập tên đăng nhập của bạn (Không được có dấu cách): ");
 		this.username = InputMethods.getString();
-		System.out.print("Nhập mật khẩu của bạn: ");
+		System.out.print("Nhập mật khẩu của bạn (Không được có dấu cách): ");
 		this.password = InputMethods.getString();
 	}
 	

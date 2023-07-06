@@ -2,6 +2,7 @@ package view;
 
 import config.InputMethods;
 import config.Message;
+import config.Validate;
 import controller.PresentController;
 import controller.SavingController;
 import controller.UserController;
@@ -39,9 +40,9 @@ public class Menu {
 	}
 	
 	public static void login() {
-		System.out.print("Nhập tên đăng nhập: ");
+		System.out.print("Nhập tên đăng nhập (Không được có dấu cách): ");
 		String username = InputMethods.getString();
-		System.out.print("Nhập mật khẩu: ");
+		System.out.print("Nhập mật khẩu (Không được có dấu cách): ");
 		String password = InputMethods.getString();
 		User user = userController.login(username, password);
 		if (user == null) {
@@ -72,16 +73,24 @@ public class Menu {
 		user.inputData();
 		System.out.print("Xác nhận mật khẩu: ");
 		String confirmPassword = InputMethods.getString();
-		if (user.getPassword().equals(confirmPassword)) {
-			boolean check = userController.register(user.getUsername());
-			if (check) {
-				userController.save(user);
-				System.out.println(Message.REGISTER_SUCCESS);
+		if (Validate.username(user.getUsername())) {
+			if (Validate.password(user.getPassword())) {
+				if (user.getPassword().equals(confirmPassword)) {
+					boolean check = userController.register(user.getUsername());
+					if (check) {
+						userController.save(user);
+						System.out.println(Message.REGISTER_SUCCESS);
+					} else {
+						System.err.println(Message.REGISTER_FAILED);
+					}
+				} else {
+					System.err.println("Mật khẩu không trùng nhau");
+				}
 			} else {
-				System.err.println(Message.REGISTER_FAILED);
+				System.err.println("Mật khẩu không được có dấu cách");
 			}
 		} else {
-			System.err.println("Mật khẩu không trùng nhau");
+			System.err.println("Tên đăng nhập không được có dấu cách");
 		}
 	}
 }
