@@ -45,9 +45,16 @@ public class MenuUser {
 					new UserInterestRate(data, userController, presentController, savingController);
 					break;
 				case 4:
-					changeInformation();
+					// nạp tiền
+					deposit();
 					break;
 				case 5:
+					// history
+					break;
+				case 6:
+					changeInformation();
+					break;
+				case 7:
 					changePassword();
 					break;
 				case 0:
@@ -107,6 +114,38 @@ public class MenuUser {
 				System.err.println(Message.NOT_FOUND);
 			}
 		}
+	}
+	
+	public void deposit() {
+		while (true) {
+			Navbar.showDeposit();
+			System.out.print(Message.CHOICE);
+			int choice = InputMethods.getInteger();
+			switch (choice) {
+				case 1:
+					addMoney(200000);
+					break;
+				case 2:
+					addMoney(500000);
+					break;
+				case 3:
+					addMoney(1000000);
+					break;
+				case 4:
+					addMoney(2000000);
+					break;
+				case 0:
+					return;
+				default:
+					break;
+			}
+		}
+	}
+	
+	public void addMoney(long money) {
+		data.setMoney(data.getMoney() + money);
+		userController.save(data);
+		System.out.println(Message.SUCCESS);
 	}
 	
 	public void changeInformation() {

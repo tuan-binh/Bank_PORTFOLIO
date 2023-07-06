@@ -13,11 +13,13 @@ public class User implements Serializable {
 	private String password;
 	private long money;
 	private List<Saving> list;
+	private List<History> histories;
 	private Roles roles;
 	private boolean status;
 	
 	public User() {
 		list = new ArrayList<>();
+		histories = new ArrayList<>();
 		roles = Roles.USER;
 		status = true;
 	}
@@ -31,13 +33,14 @@ public class User implements Serializable {
 		this.roles = roles;
 	}
 	
-	public User(int id, String fullName, String username, String password, long money, List<Saving> list, Roles roles, boolean status) {
+	public User(int id, String fullName, String username, String password, long money, List<Saving> list,List<History> histories, Roles roles, boolean status) {
 		this.id = id;
 		this.fullName = fullName;
 		this.username = username;
 		this.password = password;
 		this.money = money;
 		this.list = list;
+		this.histories = histories;
 		this.roles = roles;
 		this.status = status;
 	}
@@ -88,6 +91,14 @@ public class User implements Serializable {
 	
 	public void setList(List<Saving> list) {
 		this.list = list;
+	}
+	
+	public List<History> getHistories() {
+		return histories;
+	}
+	
+	public void setHistories(List<History> histories) {
+		this.histories = histories;
 	}
 	
 	public Roles getRoles() {

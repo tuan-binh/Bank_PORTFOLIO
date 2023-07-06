@@ -5,7 +5,7 @@ import java.sql.SQLOutput;
 import static config.ColorConsole.*;
 
 public class Navbar {
-	public static final void Menu() {
+	public static void Menu() {
 		System.out.println(BLUE + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━ BANK ━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                           ┃                             ┃                          ┃");
 		System.out.println("┃        " + PURPLE + "1. ĐĂNG NHẬP       " + BLUE + "┃          " + PURPLE + "2. ĐĂNG KÝ         " + BLUE + "┃          " + PURPLE + "0. THOÁT        " + BLUE + "┃");
@@ -13,7 +13,7 @@ public class Navbar {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void MenuAdmin() {
+	public static void MenuAdmin() {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ADMIN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃          " + PURPLE + "1. QUẢN LÝ NHÂN VIÊN                   2. QUẢN LÝ NGƯỜI DÙNG              " + BLUE + "┃");
@@ -23,7 +23,7 @@ public class Navbar {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void Employee() {
+	public static void Employee() {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MANAGER EMPLOYEE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃          " + PURPLE + "1. THÊM NHÂN VIÊN                        2. THAY ĐỔI NHÂN VIÊN            " + BLUE + "┃");
@@ -33,7 +33,7 @@ public class Navbar {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void User() {
+	public static void User() {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MANAGER USER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃           " + PURPLE + "1. HIỂN THỊ NGƯỜI DÙNG                   2. TÌM KIẾM NGƯỜI DÙNG          " + BLUE + "┃");
@@ -42,7 +42,7 @@ public class Navbar {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void Money() {
+	public static void Money() {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MANAGER MONEY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃            " + PURPLE + "1. THÊM TIỀN VỐN VÀO NGÂN HÀNG                                          " + BLUE + "┃");
@@ -53,7 +53,7 @@ public class Navbar {
 		
 	}
 	
-	public static final void Interest() {
+	public static void Interest() {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MANAGER INTEREST ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃            " + PURPLE + "1. HIỂN THỊ LÃI XUẤT                   2. THÊM LÃI XUẤT MỚI             " + BLUE + "┃");
@@ -63,7 +63,7 @@ public class Navbar {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void MenuEmployee() {
+	public static void MenuEmployee() {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MENU EMPLOYEE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                     ┃");
 		System.out.println("┃            " + PURPLE + "1. THAY ĐỔI TIỀN NGƯỜI DÙNG       2. HIỂN THỊ NGƯỜI DÙNG                 " + BLUE + "┃");
@@ -73,20 +73,22 @@ public class Navbar {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void MenuUser() {
+	public static void MenuUser() {
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━ USER ━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                          ┃");
 		System.out.println("┃                " + PURPLE + "1. XEM THÔNG TIN CÁ NHÂN                  " + BLUE + "┃");
 		System.out.println("┃                " + PURPLE + "2. CHUYỂN TIỀN                            " + BLUE + "┃");
 		System.out.println("┃                " + PURPLE + "3. GỬI TIỀN TIẾT KIỆM                     " + BLUE + "┃");
-		System.out.println("┃                " + PURPLE + "4. THAY ĐỔI THÔNG TIN CÁ NHÂN             " + BLUE + "┃");
-		System.out.println("┃                " + PURPLE + "5. THAY ĐỔI MẬT KHẨU                      " + BLUE + "┃");
+		System.out.println("┃                " + PURPLE + "4. NẠP TIỀN                               " + BLUE + "┃");
+		System.out.println("┃                " + PURPLE + "5. lỊCH SỬ GIAO DỊNH                      " + BLUE + "┃");
+		System.out.println("┃                " + PURPLE + "6. THAY ĐỔI THÔNG TIN CÁ NHÂN             " + BLUE + "┃");
+		System.out.println("┃                " + PURPLE + "7. THAY ĐỔI MẬT KHẨU                      " + BLUE + "┃");
 		System.out.println("┃                " + PURPLE + "0. ĐĂNG XUẤT                              " + BLUE + "┃");
 		System.out.println("┃                                                          ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void UserInterestRate() {
+	public static void UserInterestRate() {
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━ USER ━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                          ┃");
 		System.out.println("┃                " + PURPLE + "1. GỬI LÃI XUẤT KHÔNG KỲ HẠN              " + BLUE + "┃");
@@ -96,7 +98,7 @@ public class Navbar {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
-	public static final void ShowMyInterestRate() {
+	public static void ShowMyInterestRate() {
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━ USER ━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                          ┃");
 		System.out.println("┃                " + PURPLE + "1. RÚT TIỀN MỘT PHẦN                      " + BLUE + "┃");
@@ -105,4 +107,19 @@ public class Navbar {
 		System.out.println("┃                                                          ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
+	
+	public static void showDeposit() {
+		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+		System.out.println("┃                             ┃                            ┃");
+		System.out.println("┃       ( 1 ) 200.000         ┃     ( 2 ) 500.000          ┃");
+		System.out.println("┃                             ┃                            ┃");
+		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+		System.out.println("┃                             ┃                            ┃");
+		System.out.println("┃       ( 3 ) 1.000.000       ┃     ( 4 ) 2.000.000        ┃");
+		System.out.println("┃                             ┃                            ┃");
+		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+		System.out.println("┃                     ( 5 ) Thoát                          ┃");
+		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+	}
+	
 }
