@@ -32,6 +32,7 @@ public class InterestRateManager {
 				case 0:
 					return;
 				default:
+					System.err.println("Try again 0 to 4");
 					break;
 			}
 		}
@@ -57,7 +58,7 @@ public class InterestRateManager {
 	}
 	
 	public void editInterestRate() {
-		System.out.print("Enter ID you want: ");
+		System.out.print("Nhập vào ID bạn muốn sửa: ");
 		int id = InputMethods.getInteger();
 		Present present = presentController.findById(id);
 		if (present == null) {
@@ -71,7 +72,7 @@ public class InterestRateManager {
 	}
 	
 	public void deleteInterestRate() {
-		System.out.print("Enter ID you want: ");
+		System.out.print("Nhập vào ID bạn muốn xóa: ");
 		int id = InputMethods.getInteger();
 		presentController.delete(id);
 	}

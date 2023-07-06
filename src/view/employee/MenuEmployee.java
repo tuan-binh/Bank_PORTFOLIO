@@ -118,7 +118,7 @@ public class MenuEmployee {
 	
 	public void addInterestRateToUser() {
 		Date date = new Date();
-		System.out.print("Enter ID you want: ");
+		System.out.print("Nhập vào ID người dùng: ");
 		int id = InputMethods.getInteger();
 		User user = userController.findById(id);
 		if (user == null || user.getRoles().equals(Roles.ADMIN) || user.getRoles().equals(Roles.EMPLOYEE)) {
@@ -127,7 +127,7 @@ public class MenuEmployee {
 		}
 		showInterestRate();
 		while (true) {
-			System.out.print("Enter ID you want to add: ");
+			System.out.print("Nhập vào ID lãi xuất: ");
 			int idInterestRate = InputMethods.getInteger();
 			Present interestRate = presentController.findById(idInterestRate);
 			if (interestRate != null) {
@@ -141,7 +141,7 @@ public class MenuEmployee {
 				// khởi tạo đối tượng saving
 				Saving saving = new Saving();
 				saving.setId(savingController.getNewId(user.getList()));
-				System.out.print("Enter money you want: ");
+				System.out.print("Nhập vào số tiền muốn gửi: ");
 				long money = InputMethods.getLong();
 				if (money <= user.getMoney()) {
 					saving.setMoneySaving(money);

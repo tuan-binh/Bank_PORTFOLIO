@@ -26,19 +26,20 @@ public class MoneyManager {
 				case 0:
 					return;
 				default:
+					System.err.println("Try again 0 to 2");
 					break;
 			}
 		}
 	}
 	
 	public void addCapitalFunds() {
-		System.out.print("Enter money do you want: ");
+		System.out.print("Nhập tiền bạn muốn cho vào ");
 		long amount = InputMethods.getPositiveLong();
 		admin.setMoney(admin.getMoney() + amount);
 	}
 	
 	public void minusCapitalFunds() {
-		System.out.print("Enter money do you want: ");
+		System.out.print("Nhập tiền bạn muốn rút ra: ");
 		long amount = InputMethods.getPositiveLong();
 		if (amount > admin.getMoney()) {
 			System.err.println(Message.YOU_WRONG);

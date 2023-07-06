@@ -45,7 +45,7 @@ public class MenuAdmin {
 				case 0:
 					return;
 				default:
-					System.err.println("Try again 1 to 5");
+					System.err.println("Try again 0 to 4");
 					break;
 			}
 		}

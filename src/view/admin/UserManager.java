@@ -32,7 +32,7 @@ public class UserManager {
 				case 0:
 					return;
 				default:
-					System.err.println("Try again 1 to 4");
+					System.err.println("Try again 0 to 3");
 					break;
 			}
 		}
@@ -49,7 +49,7 @@ public class UserManager {
 	}
 	
 	public void searchUsers() {
-		System.out.print("Enter text your want search: ");
+		System.out.print("Nhập từ tìm người dùng: ");
 		String text = InputMethods.getString();
 		System.out.println("============================================================");
 		for (User u : userController.getAll()) {
@@ -61,7 +61,7 @@ public class UserManager {
 	}
 	
 	public void changeStatusUser() {
-		System.out.print("Enter ID you want to change status: ");
+		System.out.print("Nhập ID người dùng để thay đổi trạng thái: ");
 		int id = InputMethods.getInteger();
 		User user = userController.findById(id);
 		if (user == null || user.getRoles().equals(Roles.ADMIN) || user.getRoles().equals(Roles.EMPLOYEE)) {

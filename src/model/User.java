@@ -107,11 +107,11 @@ public class User implements Serializable {
 	}
 	
 	public void inputData() {
-		System.out.print("Enter your name: ");
+		System.out.print("Nhập tên của bạn: ");
 		this.fullName = InputMethods.getString();
-		System.out.print("Enter your username: ");
+		System.out.print("Nhập tên đăng nhập của bạn: ");
 		this.username = InputMethods.getString();
-		System.out.print("Enter your password: ");
+		System.out.print("Nhập mật khẩu của bạn: ");
 		this.password = InputMethods.getString();
 	}
 	

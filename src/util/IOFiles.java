@@ -3,8 +3,8 @@ package util;
 import java.io.*;
 
 public class IOFiles {
-	public static final String USER_PATH = "D:\\PORTFOLIO\\Bank\\src\\database\\user.txt";
-	public static final String PRESENT_PATH = "D:\\PORTFOLIO\\Bank\\src\\database\\present.txt";
+	public static final String USER_PATH = "src/database/user.txt";
+	public static final String PRESENT_PATH = "src/database/present.txt";
 	
 	public static void writeToFile(Object o, String path) {
 		FileOutputStream fos = null;

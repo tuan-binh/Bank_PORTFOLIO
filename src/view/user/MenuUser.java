@@ -50,7 +50,7 @@ public class MenuUser {
 				case 0:
 					return;
 				default:
-					System.err.print("Choice again 0 to 5");
+					System.err.print("Try again 0 to 5");
 					break;
 			}
 		}
@@ -58,11 +58,11 @@ public class MenuUser {
 	
 	public void showInformation() {
 		
-		System.out.println("╔══════════════════════════════════════════════════════════╗");
-		System.out.printf("║ Name: %50s ║", data.getFullName().toUpperCase());
-		System.out.printf("\n║ Username: %46s ║", data.getUsername());
-		System.out.printf("\n║ Money: %49s ║\n", InputMethods.formatNumber().format(data.getMoney()));
-		System.out.println("╚══════════════════════════════════════════════════════════╝");
+		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+		System.out.printf("┃ Name: %50s ┃", data.getFullName().toUpperCase());
+		System.out.printf("\n┃ Username: %46s ┃", data.getUsername());
+		System.out.printf("\n┃ Money: %49s ┃\n", InputMethods.formatNumber().format(data.getMoney()));
+		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
 	public void sentMoneyToUser() {
@@ -166,12 +166,12 @@ public class MenuUser {
 	}
 	
 	public static void showName(User data) {
-		System.out.print("╔");
+		System.out.print("┏");
 		for (int i = 0; i < data.getFullName().length() + 2; i++) {
-			System.out.print("═");
+			System.out.print("━");
 		}
-		System.out.print("╗");
+		System.out.print("┓");
 		System.out.println();
-		System.out.printf("║ %s ║\n", data.getFullName().toUpperCase());
+		System.out.printf("┃ %s ┃\n", data.getFullName().toUpperCase());
 	}
 }

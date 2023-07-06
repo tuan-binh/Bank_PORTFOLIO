@@ -39,9 +39,9 @@ public class Menu {
 	}
 	
 	public static void login() {
-		System.out.print("Enter your username: ");
+		System.out.print("Nhập tên đăng nhập: ");
 		String username = InputMethods.getString();
-		System.out.print("Enter your password: ");
+		System.out.print("Nhập mật khẩu: ");
 		String password = InputMethods.getString();
 		User user = userController.login(username, password);
 		if (user == null) {
@@ -56,7 +56,7 @@ public class Menu {
 			} else {
 				if (user.isStatus()) {
 					// user open
-					new MenuUser(user,userController, presentController, savingController);
+					new MenuUser(user, userController, presentController, savingController);
 				} else {
 					// user blocked
 					System.err.println(Message.ACCOUNT_BLOCKS);
@@ -70,12 +70,18 @@ public class Menu {
 		User user = new User();
 		user.setId(userController.getNewId());
 		user.inputData();
-		boolean check = userController.register(user.getUsername());
-		if (check) {
-			userController.save(user);
-			System.out.println(Message.REGISTER_SUCCESS);
+		System.out.print("Xác nhận mật khẩu: ");
+		String confirmPassword = InputMethods.getString();
+		if (user.getPassword().equals(confirmPassword)) {
+			boolean check = userController.register(user.getUsername());
+			if (check) {
+				userController.save(user);
+				System.out.println(Message.REGISTER_SUCCESS);
+			} else {
+				System.err.println(Message.REGISTER_FAILED);
+			}
 		} else {
-			System.err.println(Message.REGISTER_FAILED);
+			System.err.println("Mật khẩu không trùng nhau");
 		}
 	}
 }

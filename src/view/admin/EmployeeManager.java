@@ -37,7 +37,7 @@ public class EmployeeManager {
 				case 0:
 					return;
 				default:
-					System.err.println("Try again 1 to 6");
+					System.err.println("Try again 0 to 5");
 					break;
 			}
 		}
@@ -58,7 +58,7 @@ public class EmployeeManager {
 	}
 	
 	public void editEmployee() {
-		System.out.print("Enter ID you want to edit: ");
+		System.out.print("Nhập ID nhân viên muốn chỉnh sửa: ");
 		int id = InputMethods.getInteger();
 		User user = userController.findById(id);
 		if (user == null || user.getRoles().equals(Roles.ADMIN) || user.getRoles().equals(Roles.USER)) {
@@ -73,7 +73,7 @@ public class EmployeeManager {
 	}
 	
 	public void layoffEmployee() {
-		System.out.print("Enter ID you want to layoff: ");
+		System.out.print("Nhập ID nhân viên muốn sa thải: ");
 		int id = InputMethods.getInteger();
 		User employee = userController.findById(id);
 		if (employee == null || employee.getRoles().equals(Roles.ADMIN) || employee.getRoles().equals(Roles.USER)) {
@@ -84,7 +84,7 @@ public class EmployeeManager {
 	}
 	
 	public void searchEmployee() {
-		System.out.print("Enter text your want search: ");
+		System.out.print("Nhập từ để tìm nhân viên: ");
 		String text = InputMethods.getString();
 		System.out.println("============================================================");
 		for (User u : userController.getAll()) {
