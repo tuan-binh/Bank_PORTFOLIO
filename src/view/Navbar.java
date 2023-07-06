@@ -2,9 +2,11 @@ package view;
 
 import java.sql.SQLOutput;
 
+import static config.ColorConsole.*;
+
 public class Navbar {
 	public static final void Menu() {
-		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━ BANK ━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+		System.out.println(BLUE + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━ BANK ━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                           ┃                             ┃                          ┃");
 		System.out.println("┃        1. ĐĂNG NHẬP       ┃          2. ĐĂNG KÝ         ┃          0. THOÁT        ┃");
 		System.out.println("┃                           ┃                             ┃                          ┃");

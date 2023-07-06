@@ -154,8 +154,10 @@ public class MenuUser {
 				String confirmPassword = InputMethods.getString();
 				if (newPassword.equals(confirmPassword)) {
 					newUser.setPassword(newPassword);
+					data = newUser;
 					userController.save(newUser);
 				} else {
+					System.out.println();
 					continue;
 				}
 				break;

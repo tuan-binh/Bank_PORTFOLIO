@@ -25,6 +25,8 @@ public class MenuAdmin {
 		this.userController = userController;
 		this.presentController = presentController;
 		while (true) {
+			System.out.println();
+			showInformation();
 			Navbar.MenuAdmin();
 			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();

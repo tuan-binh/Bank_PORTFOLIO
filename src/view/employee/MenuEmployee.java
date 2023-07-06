@@ -15,12 +15,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MenuEmployee {
+	
+	private User dataAdmin;
 	private UserController userController;
 	private PresentController presentController;
 	
 	private SavingController savingController;
 	
-	public MenuEmployee(UserController userController, PresentController presentController, SavingController savingController) {
+	public MenuEmployee(User dataAdmin, UserController userController, PresentController presentController, SavingController savingController) {
+		this.dataAdmin = dataAdmin;
 		this.userController = userController;
 		this.presentController = presentController;
 		this.savingController = savingController;
@@ -80,7 +83,11 @@ public class MenuEmployee {
 		System.out.print("Bạn muốn nạp bao nhiêu: ");
 		long money = InputMethods.getPositiveLong();
 		user.setMoney(user.getMoney() + money);
+		if (money <= dataAdmin.getMoney()) {
+			dataAdmin.setMoney(dataAdmin.getMoney() - money);
+		}
 		userController.save(user);
+		userController.save(dataAdmin);
 	}
 	
 	public void minusMoney(User user) {
@@ -91,7 +98,9 @@ public class MenuEmployee {
 			return;
 		}
 		user.setMoney(user.getMoney() - money);
+		dataAdmin.setMoney(dataAdmin.getMoney() + money);
 		userController.save(user);
+		userController.save(dataAdmin);
 	}
 	
 	public void showInformationUser() {
