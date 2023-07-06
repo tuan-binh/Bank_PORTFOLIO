@@ -40,9 +40,9 @@ public class Menu {
 	}
 	
 	public static void login() {
-		System.out.print("Nhập tên đăng nhập (Không được có dấu cách): ");
+		System.out.print("Nhập tên đăng nhập : ");
 		String username = InputMethods.getString();
-		System.out.print("Nhập mật khẩu (Không được có dấu cách): ");
+		System.out.print("Nhập mật khẩu : ");
 		String password = InputMethods.getString();
 		User user = userController.login(username, password);
 		if (user == null) {
@@ -73,9 +73,13 @@ public class Menu {
 		user.inputData();
 		System.out.print("Xác nhận mật khẩu: ");
 		String confirmPassword = InputMethods.getString();
+		// check username
 		if (Validate.username(user.getUsername())) {
+			// check password
 			if (Validate.password(user.getPassword())) {
+				// check 2 password có trùng nhau không
 				if (user.getPassword().equals(confirmPassword)) {
+					// check xem có bị trùng tên đăng nhập với người khác
 					boolean check = userController.register(user.getUsername());
 					if (check) {
 						userController.save(user);

@@ -14,13 +14,16 @@ import view.Navbar;
 import java.util.Calendar;
 import java.util.Date;
 
+import static config.ColorConsole.BLUE;
+import static config.ColorConsole.PURPLE;
+
 public class MenuEmployee {
 	private UserController userController;
 	private PresentController presentController;
 	
 	private SavingController savingController;
 	
-	public MenuEmployee( UserController userController, PresentController presentController, SavingController savingController) {
+	public MenuEmployee(UserController userController, PresentController presentController, SavingController savingController) {
 		this.userController = userController;
 		this.presentController = presentController;
 		this.savingController = savingController;
@@ -58,8 +61,8 @@ public class MenuEmployee {
 			return;
 		}
 		System.out.println("╔═════════════════╗");
-		System.out.println("║   1. Nạp Tiền   ║");
-		System.out.println("║   2. Rút Tiền   ║");
+		System.out.println("║   " + PURPLE + "1. Nạp Tiền   " + BLUE + "║");
+		System.out.println("║   " + PURPLE + "2. Rút Tiền   " + BLUE + "║");
 		System.out.println("╚═════════════════╝");
 		System.out.print(Message.CHOICE);
 		int choice = InputMethods.getInteger();

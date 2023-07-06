@@ -12,6 +12,9 @@ import view.Navbar;
 import java.sql.SQLOutput;
 import java.text.DecimalFormat;
 
+import static config.ColorConsole.BLUE;
+import static config.ColorConsole.PURPLE;
+
 public class MenuUser {
 	
 	private User data;
@@ -59,9 +62,9 @@ public class MenuUser {
 	public void showInformation() {
 		
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-		System.out.printf("┃ Name: %50s ┃", data.getFullName().toUpperCase());
-		System.out.printf("\n┃ Username: %46s ┃", data.getUsername());
-		System.out.printf("\n┃ Money: %49s ┃\n", InputMethods.formatNumber().format(data.getMoney()));
+		System.out.printf("┃ " + PURPLE + "Name: %50s " + BLUE + "┃", data.getFullName().toUpperCase());
+		System.out.printf("\n┃ " + PURPLE + "Username: %46s " + BLUE + "┃", data.getUsername());
+		System.out.printf("\n┃ " + PURPLE + "Money: %49s " + BLUE + "┃\n", InputMethods.formatNumber().format(data.getMoney()));
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 	
@@ -174,6 +177,6 @@ public class MenuUser {
 		}
 		System.out.print("┓");
 		System.out.println();
-		System.out.printf("┃ %s ┃\n", data.getFullName().toUpperCase());
+		System.out.printf("┃ " + PURPLE + "%s " + BLUE + "┃\n", data.getFullName().toUpperCase());
 	}
 }
