@@ -16,12 +16,7 @@ public class Menu {
 	static final PresentController presentController = new PresentController();
 	static final SavingController savingController = new SavingController();
 	
-	static User dataAdmin;
-	
 	public static void main(String[] args) {
-		if (userController.getAll().size() > 0) {
-			dataAdmin = userController.findById(0);
-		}
 		while (true) {
 			Navbar.Menu();
 			System.out.print(Message.CHOICE);
@@ -57,7 +52,7 @@ public class Menu {
 				new MenuAdmin(user, userController, presentController);
 			} else if (user.getRoles().equals(Roles.EMPLOYEE)) {
 				// employee
-				new MenuEmployee(dataAdmin,userController, presentController, savingController);
+				new MenuEmployee(userController, presentController, savingController);
 			} else {
 				if (user.isStatus()) {
 					// user open
