@@ -37,7 +37,8 @@ public class Navbar {
 		System.out.println(BLUE + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MANAGER USER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃           " + PURPLE + "1. HIỂN THỊ NGƯỜI DÙNG                   2. TÌM KIẾM NGƯỜI DÙNG          " + BLUE + "┃");
-		System.out.println("┃           " + PURPLE + "3. THAY ĐỔI TRẠNG THÁI NGƯỜI DÙNG        0. TRỞ LẠI                      " + BLUE + "┃");
+		System.out.println("┃           " + PURPLE + "3. THAY ĐỔI TRẠNG THÁI NGƯỜI DÙNG        4. CẤP LẠI MẬT KHẨU             " + BLUE + "┃");
+		System.out.println("┃           " + PURPLE + "0. TRỞ LẠI                                                               " + BLUE + "┃");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}

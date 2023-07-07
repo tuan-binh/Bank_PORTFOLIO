@@ -29,6 +29,9 @@ public class UserManager {
 				case 3:
 					changeStatusUser();
 					break;
+				case 4:
+					getNewPassword();
+					break;
 				case 0:
 					return;
 				default:
@@ -39,13 +42,14 @@ public class UserManager {
 	}
 	
 	public void showListUsers() {
-		System.out.println("============================================================");
+		System.out.println("==============================================================================");
 		for (User u : userController.getAll()) {
 			if (u.getRoles().equals(Roles.USER)) {
 				System.out.println(u);
+				System.out.println("==============================================================================");
 			}
 		}
-		System.out.println("============================================================");
+		System.out.println();
 	}
 	
 	public void searchUsers() {
@@ -55,9 +59,10 @@ public class UserManager {
 		for (User u : userController.getAll()) {
 			if (u.getFullName().toLowerCase().contains(text.toLowerCase()) && u.getRoles().equals(Roles.USER)) {
 				System.out.println(u);
+				System.out.println("============================================================");
 			}
 		}
-		System.out.println("============================================================");
+		System.out.println();
 	}
 	
 	public void changeStatusUser() {
@@ -71,4 +76,28 @@ public class UserManager {
 		userController.changeStatus(id);
 	}
 	
+	public void getNewPassword() {
+		System.out.print("Nhập ID người dùng cấp lại mật khẩu: ");
+		int id = InputMethods.getInteger();
+		User user = userController.findById(id);
+		if (user == null || user.getRoles().equals(Roles.ADMIN) || user.getRoles().equals(Roles.EMPLOYEE)) {
+			System.err.println(Message.NOT_ENOUGH);
+			return;
+		}
+		String newPassword = newPassword();
+		user.setPassword(newPassword);
+		userController.save(user);
+		System.out.println("Mật khẩu mới: " + newPassword);
+	}
+	
+	public String newPassword() {
+		String result = null;
+		for (int i = 0; i < 5; i++) {
+			if (result == null) {
+				result = String.valueOf((int) Math.ceil(Math.random() * 9));
+			}
+			result += String.valueOf((int) Math.ceil(Math.random() * 9));
+		}
+		return result;
+	}
 }

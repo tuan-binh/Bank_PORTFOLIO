@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import static config.ColorConsole.*;
+
 public class User implements Serializable {
 	private int id;
 	private String fullName;
@@ -129,6 +131,6 @@ public class User implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "[ ID: " + id + " | Name: " + fullName + " | Username: " + username + " | Money: " + InputMethods.formatNumber().format(money) + " | Status: " + (status ? "Unblock" : "Block") + " ]";
+		return "[ ID: " + RED + id + BLUE + " | Name: " + RED + fullName + BLUE + " | Username: " + RED + username + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(money) + BLUE + " | Status: " + RED + (status ? "Unblock" : "Block") + BLUE + " ]";
 	}
 }
