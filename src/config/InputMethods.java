@@ -163,6 +163,17 @@ public class InputMethods {
 		}
 	}
 	
+	public static int getDay() {
+		while (true) {
+			int month = getInteger();
+			if (month < 0 || month > 31) {
+				System.err.println("Nhập sai tháng, Nhập lại từ 1 đến 31: ");
+				continue;
+			}
+			return month;
+		}
+	}
+	
 	public static DecimalFormat formatNumber() {
 		return new DecimalFormat("###,###,###");
 	}
