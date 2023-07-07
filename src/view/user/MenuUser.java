@@ -99,6 +99,10 @@ public class MenuUser {
 				while (true) {
 					System.out.print("Nhập số tiền bạn muốn chuyển: ");
 					long money = InputMethods.getPositiveLong();
+					if(money == 0) {
+						System.err.println(Message.YOU_WRONG);
+						break;
+					}
 					if (money < data.getMoney()) {
 						System.out.print("Nhập mật khẩu: ");
 						String password = InputMethods.getString();
