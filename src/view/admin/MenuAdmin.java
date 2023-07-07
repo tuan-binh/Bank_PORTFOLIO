@@ -4,6 +4,7 @@ import config.InputMethods;
 import config.Message;
 import controller.PresentController;
 import controller.UserController;
+import model.History;
 import model.Roles;
 import model.User;
 import view.Navbar;
@@ -12,7 +13,9 @@ import view.admin.InterestRateManager;
 import view.admin.MoneyManager;
 import view.admin.UserManager;
 
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import static config.ColorConsole.*;
@@ -28,7 +31,6 @@ public class MenuAdmin {
 		this.presentController = presentController;
 		while (true) {
 			System.out.println();
-			showInformation();
 			Navbar.MenuAdmin();
 			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
@@ -45,6 +47,9 @@ public class MenuAdmin {
 					break;
 				case 4:
 					new InterestRateManager(presentController);
+					break;
+				case 5:
+					deliveryStatistics();
 					break;
 				case 0:
 					return;
@@ -68,9 +73,33 @@ public class MenuAdmin {
 			}
 		}
 		for (Map.Entry<Roles, Integer> entry : myList.entrySet()) {
-			System.out.println(BLUE+" *> " + entry.getKey() + " -> Số Lượng: " + entry.getValue());
+			System.out.println(BLUE + " *> " + entry.getKey() + " -> Số Lượng: " + entry.getValue());
 		}
 		System.out.println(" *> CAPITAL FUNDS: " + InputMethods.formatNumber().format(admin.getMoney()));
+	}
+	
+	public void deliveryStatistics() {
+		System.out.print("Nhập ngày muốn tìm: ");
+		int day = InputMethods.getMonth();
+		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+		for (User user : userController.getAll()) {
+			if (user.getRoles().equals(Roles.USER)) {
+				for (History item : user.getHistories()) {
+					if (item.getTime().getDate() == day) {
+						if (item.getId().startsWith("G")) {
+							item.contentSend();
+						}
+						if (item.getId().startsWith("N")) {
+							item.contentReceive();
+						}
+						if (item.getId().startsWith("R")) {
+							item.contentChanged();
+						}
+					}
+					System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+				}
+			}
+		}
 	}
 	
 }

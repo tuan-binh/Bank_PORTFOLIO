@@ -156,6 +156,7 @@ public class InputMethods {
 		while (true) {
 			int month = getInteger();
 			if (month < 0 || month > 12) {
+				System.err.println("Nhập sai tháng, Nhập lại từ 1 đến 12: ");
 				continue;
 			}
 			return month;
