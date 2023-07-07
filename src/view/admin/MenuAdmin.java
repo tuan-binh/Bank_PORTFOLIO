@@ -13,10 +13,7 @@ import view.admin.InterestRateManager;
 import view.admin.MoneyManager;
 import view.admin.UserManager;
 
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 import static config.ColorConsole.*;
 
@@ -84,6 +81,7 @@ public class MenuAdmin {
 		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		for (User user : userController.getAll()) {
 			if (user.getRoles().equals(Roles.USER)) {
+				List<History> list = new ArrayList<>(user.getHistories());
 				for (History item : user.getHistories()) {
 					if (item.getTime().getDate() == day) {
 						if (item.getId().startsWith("G")) {
