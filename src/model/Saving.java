@@ -5,6 +5,8 @@ import config.InputMethods;
 import java.io.Serializable;
 import java.util.Date;
 
+import static config.ColorConsole.*;
+
 public class Saving implements Serializable {
 	private int id;
 	private long moneySaving;  // số tiền gửi
@@ -75,8 +77,8 @@ public class Saving implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "ID: " + id + " | Money: " + InputMethods.formatNumber().format(moneySaving) + " | present: " + present + " / năm | month: " + month +
-				  "\nSentDate: " + sentDate +
-				  "\nDueDate: " + dueDate;
+		return "ID: " + RED + id + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(moneySaving) + BLUE + " | present: " + RED + present + BLUE + "% / năm | month: " + RED + month + BLUE +
+				  "\nSentDate: " + RED + sentDate + BLUE +
+				  "\nDueDate: " + RED + dueDate + BLUE;
 	}
 }

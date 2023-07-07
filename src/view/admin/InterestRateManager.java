@@ -43,11 +43,11 @@ public class InterestRateManager {
 			System.err.println(Message.EMPTY);
 			return;
 		}
-		System.out.println("====================================");
+		System.out.println("=========================================");
 		for (Present p : presentController.getAll()) {
 			System.out.println(p);
 		}
-		System.out.println("====================================");
+		System.out.println("=========================================");
 	}
 	
 	public void addInterestRate() {

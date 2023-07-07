@@ -8,7 +8,7 @@ public class Datatest {
 	static final UserController userController = new UserController();
 	
 	public static void main(String[] args) {
-		User admin = new User(1, "john", "admin", "123", 12000000, Roles.ADMIN);
+		User admin = new User(1, "john", "admin", "123", 1200000000, Roles.ADMIN);
 		userController.save(admin);
 	}
 }

@@ -49,11 +49,11 @@ public class UserInterestRate {
 			System.err.println(Message.EMPTY);
 			return;
 		}
-		System.out.println("====================================");
+		System.out.println("=========================================");
 		for (Present p : presentController.getAll()) {
 			System.out.println(p);
 		}
-		System.out.println("====================================");
+		System.out.println("=========================================");
 		System.out.print("Lựa chọn ID gói ( 0 : Để Thoát ): ");
 		int id = InputMethods.getInteger();
 		Present present = presentController.findById(id);

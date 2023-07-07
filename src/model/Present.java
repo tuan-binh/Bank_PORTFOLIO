@@ -4,6 +4,8 @@ import config.InputMethods;
 
 import java.io.Serializable;
 
+import static config.ColorConsole.*;
+
 public class Present implements Serializable {
 	private int id;
 	private double present;
@@ -51,6 +53,6 @@ public class Present implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "( ID: " + id + " | presents: " + present + "% / năm | Month: " + limitMonth + " )";
+		return "( ID: " + RED + id + BLUE + " | presents: " + RED + present + BLUE + " % / năm | Month: " + RED + limitMonth + BLUE + " )";
 	}
 }
