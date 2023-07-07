@@ -32,6 +32,9 @@ public class Menu {
 				case 2:
 					register();
 					break;
+				case 3:
+					forgetPassword();
+					break;
 				case 0:
 					return;
 				default:
@@ -59,7 +62,7 @@ public class Menu {
 			} else {
 				if (user.isStatus()) {
 					// user open
-					new MenuUser(user, userController, presentController, savingController,historyController);
+					new MenuUser(user, userController, presentController, savingController, historyController);
 				} else {
 					// user blocked
 					System.err.println(Message.ACCOUNT_BLOCKS);
@@ -99,4 +102,36 @@ public class Menu {
 			System.err.println("Tên đăng nhập không được có dấu cách");
 		}
 	}
+	
+	public static void forgetPassword() {
+		System.out.print("Nhập tên đăng nhập: ");
+		String username = InputMethods.getString();
+		User myUser = null;
+		for (User u : userController.getAll()) {
+			if (u.getUsername().equals(username)) {
+				myUser = u;
+			}
+		}
+		
+		if (myUser == null) {
+			System.err.println(Message.NOT_FOUND);
+			return;
+		}
+		String newPassword = newPassword();
+		myUser.setPassword(newPassword);
+		userController.save(myUser);
+		System.out.println("Mật khẩu mới là: " + newPassword);
+	}
+	
+	public static String newPassword() {
+		String result = null;
+		for (int i = 0; i < 5; i++) {
+			if (result == null) {
+				result = String.valueOf((int) Math.ceil(Math.random() * 9));
+			}
+			result += String.valueOf((int) Math.ceil(Math.random() * 9));
+		}
+		return result;
+	}
+	
 }
