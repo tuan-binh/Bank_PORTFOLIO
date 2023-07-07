@@ -99,7 +99,7 @@ public class MenuUser {
 				while (true) {
 					System.out.print("Nhập số tiền bạn muốn chuyển: ");
 					long money = InputMethods.getPositiveLong();
-					if(money == 0) {
+					if (money == 0) {
 						System.err.println(Message.YOU_WRONG);
 						break;
 					}
@@ -193,11 +193,17 @@ public class MenuUser {
 	}
 	
 	public void addMoney(long money) {
-		data.setMoney(data.getMoney() + money);
-		History hisNAP = getMyHistory(historyController.getNewIdWithNAP(data.getHistories()), data, null, money);
-		historyController.save(data.getHistories(), hisNAP);
-		userController.save(data);
-		System.out.println(Message.SUCCESS);
+		System.out.print("Nhập mật khẩu: ");
+		String password = InputMethods.getString();
+		if (password.equals(data.getPassword())) {
+			data.setMoney(data.getMoney() + money);
+			History hisNAP = getMyHistory(historyController.getNewIdWithNAP(data.getHistories()), data, null, money);
+			historyController.save(data.getHistories(), hisNAP);
+			userController.save(data);
+			System.out.println(Message.SUCCESS);
+		} else {
+			System.err.println(Message.YOU_WRONG);
+		}
 	}
 	
 	public void changeInformation() {
