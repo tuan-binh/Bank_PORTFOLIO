@@ -3,6 +3,7 @@ package view;
 import config.InputMethods;
 import config.Message;
 import config.Validate;
+import controller.HistoryController;
 import controller.PresentController;
 import controller.SavingController;
 import controller.UserController;
@@ -16,6 +17,7 @@ public class Menu {
 	static final UserController userController = new UserController();
 	static final PresentController presentController = new PresentController();
 	static final SavingController savingController = new SavingController();
+	static final HistoryController historyController = new HistoryController();
 	
 	public static void main(String[] args) {
 		while (true) {
@@ -57,7 +59,7 @@ public class Menu {
 			} else {
 				if (user.isStatus()) {
 					// user open
-					new MenuUser(user, userController, presentController, savingController);
+					new MenuUser(user, userController, presentController, savingController,historyController);
 				} else {
 					// user blocked
 					System.err.println(Message.ACCOUNT_BLOCKS);

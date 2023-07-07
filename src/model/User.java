@@ -4,6 +4,7 @@ import config.InputMethods;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class User implements Serializable {
@@ -13,13 +14,13 @@ public class User implements Serializable {
 	private String password;
 	private long money;
 	private List<Saving> list;
-	private List<History> histories;
+	private LinkedList<History> histories;
 	private Roles roles;
 	private boolean status;
 	
 	public User() {
 		list = new ArrayList<>();
-		histories = new ArrayList<>();
+		histories = new LinkedList<>();
 		roles = Roles.USER;
 		status = true;
 	}
@@ -33,7 +34,7 @@ public class User implements Serializable {
 		this.roles = roles;
 	}
 	
-	public User(int id, String fullName, String username, String password, long money, List<Saving> list,List<History> histories, Roles roles, boolean status) {
+	public User(int id, String fullName, String username, String password, long money, List<Saving> list, LinkedList<History> histories, Roles roles, boolean status) {
 		this.id = id;
 		this.fullName = fullName;
 		this.username = username;
@@ -93,11 +94,11 @@ public class User implements Serializable {
 		this.list = list;
 	}
 	
-	public List<History> getHistories() {
+	public LinkedList<History> getHistories() {
 		return histories;
 	}
 	
-	public void setHistories(List<History> histories) {
+	public void setHistories(LinkedList<History> histories) {
 		this.histories = histories;
 	}
 	

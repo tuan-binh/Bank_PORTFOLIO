@@ -2,15 +2,18 @@ package view.user;
 
 import config.InputMethods;
 import config.Message;
+import controller.HistoryController;
 import controller.PresentController;
 import controller.SavingController;
 import controller.UserController;
+import model.History;
 import model.Roles;
 import model.User;
 import view.Navbar;
 
 import java.sql.SQLOutput;
 import java.text.DecimalFormat;
+import java.util.Date;
 
 import static config.ColorConsole.BLUE;
 import static config.ColorConsole.PURPLE;
@@ -21,12 +24,14 @@ public class MenuUser {
 	private UserController userController;
 	private PresentController presentController;
 	private SavingController savingController;
+	private HistoryController historyController;
 	
-	public MenuUser(User data, UserController userController, PresentController presentController, SavingController savingController) {
+	public MenuUser(User data, UserController userController, PresentController presentController, SavingController savingController, HistoryController historyController) {
 		this.data = data;
 		this.userController = userController;
 		this.presentController = presentController;
 		this.savingController = savingController;
+		this.historyController = historyController;
 		System.out.println();
 		while (true) {
 			showName(data);
@@ -50,7 +55,7 @@ public class MenuUser {
 					break;
 				case 5:
 					// history
-					
+					watchHistory();
 					break;
 				case 6:
 					changeInformation();
@@ -101,7 +106,11 @@ public class MenuUser {
 							data.setMoney(data.getMoney() - money);
 							check.setMoney(check.getMoney() + money);
 							// khởi tạo đối tượng lịch sử
-							
+							History me = getMyHistory(historyController.getNewIdWithG(data.getHistories()), data, check, money);
+							History friend = getMyHistory(historyController.getNewIdWithN(check.getHistories()), check, data, money);
+							// lưu đối tượng vào lịch sử của thằng đấy
+							historyController.save(data.getHistories(), me);
+							historyController.save(check.getHistories(), friend);
 							// lưu đối tượng
 							userController.save(check);
 							userController.save(data);
@@ -120,7 +129,16 @@ public class MenuUser {
 		}
 	}
 	
-	
+	public History getMyHistory(String id, User user1, User user2, long money) {
+		Date date = new Date();
+		History history = new History();
+		history.setId(id);
+		history.setMoney(money);
+		history.setUser1(user1);
+		history.setUser2(user2);
+		history.setTime(date);
+		return history;
+	}
 	
 	public void deposit() {
 		while (true) {
@@ -149,8 +167,31 @@ public class MenuUser {
 		}
 	}
 	
+	public void watchHistory() {
+		if (data.getHistories().size() == 0) {
+			System.err.println(Message.EMPTY);
+			return;
+		}
+		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+		for (History h : data.getHistories()) {
+			if (h.getId().startsWith("G")) {
+				h.contentSend();
+			}
+			if (h.getId().startsWith("N")) {
+				h.contentReceive();
+			}
+			if (h.getId().startsWith("R")) {
+				h.contentChanged();
+			}
+			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+		}
+		System.out.println();
+	}
+	
 	public void addMoney(long money) {
 		data.setMoney(data.getMoney() + money);
+		History hisNAP = getMyHistory(historyController.getNewIdWithNAP(data.getHistories()), data, null, money);
+		historyController.save(data.getHistories(), hisNAP);
 		userController.save(data);
 		System.out.println(Message.SUCCESS);
 	}

@@ -1,7 +1,11 @@
 package model;
 
+import config.InputMethods;
+
 import java.io.Serializable;
 import java.util.Date;
+
+import static config.ColorConsole.*;
 
 public class History implements Serializable {
 	private String id; // id
@@ -62,13 +66,18 @@ public class History implements Serializable {
 	}
 	
 	public void contentSend() {
-		System.out.println(user1.getUsername() + " Đã Gửi: " + money + " Đến tài khoản: " + user2.getUsername());
-		System.out.println("Lúc: " + time);
+		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Gửi: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Đến tài khoản: " + RED + user2.getUsername().toUpperCase());
+		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
 	
 	public void contentReceive() {
-		System.out.println(user1.getUsername() + " Đã Nhận: " + money + " Từ tài khoản: " + user2.getUsername());
-		System.out.println("Lúc: " + time);
+		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Nhận: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Từ tài khoản: " + RED + user2.getUsername().toUpperCase());
+		System.out.println(GREEN + "Lúc: " + RED + time);
+	}
+	
+	public void contentChanged() {
+		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Nạp: " + RED + InputMethods.formatNumber().format(money));
+		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
 	
 }
