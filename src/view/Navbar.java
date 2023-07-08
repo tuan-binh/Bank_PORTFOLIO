@@ -18,7 +18,7 @@ public class Navbar {
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┃          " + PURPLE + "1. QUẢN LÝ NHÂN VIÊN                   2. QUẢN LÝ NGƯỜI DÙNG              " + BLUE + "┃");
 		System.out.println("┃          " + PURPLE + "3. QUẢN LÝ TIỀN NGÂN HÀNG              4. QUẢN LÝ LÃI XUẤT                " + BLUE + "┃");
-		System.out.println("┃          " + PURPLE + "5. THỐNG KÊ GIAO DỊNH                  0. ĐĂNG XUẤT                       " + BLUE + "┃");
+		System.out.println("┃          " + PURPLE + "5. THỐNG KÊ GIAO DỊNH TRONG NGÀY       0. ĐĂNG XUẤT                       " + BLUE + "┃");
 		System.out.println("┃                                                                                    ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}

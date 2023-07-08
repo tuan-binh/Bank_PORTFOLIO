@@ -8,6 +8,9 @@ import model.Roles;
 import model.User;
 import view.Navbar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EmployeeManager {
 	private UserController userController;
 	
@@ -95,25 +98,40 @@ public class EmployeeManager {
 	public void searchEmployee() {
 		System.out.print("Nhập từ để tìm nhân viên: ");
 		String text = InputMethods.getString();
+		boolean check = false;
 		System.out.println("============================================================");
 		for (User u : userController.getAll()) {
 			if (u.getFullName().toLowerCase().contains(text.toLowerCase())) {
 				if (u.getRoles().equals(Roles.EMPLOYEE)) {
 					System.out.println(u);
+					check = true;
 				}
 			}
+		}
+		if(!check) {
+			System.err.println(Message.NOT_FOUND);
 		}
 		System.out.println("============================================================");
 	}
 	
 	public void showListEmployees() {
-		System.out.println("============================================================");
+		List<User> employees = new ArrayList<>();
 		for (User e : userController.getAll()) {
 			if (e.getRoles().equals(Roles.EMPLOYEE)) {
-				System.out.println(e);
+				employees.add(e);
 			}
 		}
+		if (employees.size() == 0) {
+			System.err.println(Message.EMPTY);
+			return;
+		}
 		System.out.println("============================================================");
+		for (User e : employees) {
+			if (e.getRoles().equals(Roles.EMPLOYEE)) {
+				System.out.println(e);
+				System.out.println("============================================================");
+			}
+		}
 	}
 	
 }

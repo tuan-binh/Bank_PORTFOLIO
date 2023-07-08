@@ -7,6 +7,9 @@ import model.Roles;
 import model.User;
 import view.Navbar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserManager {
 	
 	private UserController userController;
@@ -42,8 +45,18 @@ public class UserManager {
 	}
 	
 	public void showListUsers() {
-		System.out.println("==============================================================================");
+		List<User> users = new ArrayList<>();
 		for (User u : userController.getAll()) {
+			if (u.getRoles().equals(Roles.USER)) {
+				users.add(u);
+			}
+		}
+		if (users.size() == 0) {
+			System.err.println(Message.EMPTY);
+			return;
+		}
+		System.out.println("==============================================================================");
+		for (User u : users) {
 			if (u.getRoles().equals(Roles.USER)) {
 				System.out.println(u);
 				System.out.println("==============================================================================");
@@ -55,13 +68,18 @@ public class UserManager {
 	public void searchUsers() {
 		System.out.print("Nhập từ tìm người dùng: ");
 		String text = InputMethods.getString();
+		boolean check = true;
 		System.out.println("============================================================");
 		for (User u : userController.getAll()) {
 			if (u.getFullName().toLowerCase().contains(text.toLowerCase()) && u.getRoles().equals(Roles.USER)) {
 				System.out.println(u);
-				System.out.println("============================================================");
+				check = false;
 			}
 		}
+		if (check) {
+			System.err.println(Message.NOT_FOUND);
+		}
+		System.out.println("============================================================");
 		System.out.println();
 	}
 	
