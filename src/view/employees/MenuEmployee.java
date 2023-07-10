@@ -1,4 +1,4 @@
-package view.employee;
+package view.employees;
 
 import config.InputMethods;
 import config.Message;
@@ -20,7 +20,6 @@ import static config.ColorConsole.PURPLE;
 public class MenuEmployee {
 	private UserController userController;
 	private PresentController presentController;
-	
 	private SavingController savingController;
 	
 	public MenuEmployee(UserController userController, PresentController presentController, SavingController savingController) {

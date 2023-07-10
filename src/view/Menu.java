@@ -10,7 +10,7 @@ import controller.UserController;
 import model.Roles;
 import model.User;
 import view.admin.MenuAdmin;
-import view.employee.MenuEmployee;
+import view.employees.MenuEmployee;
 import view.user.MenuUser;
 
 public class Menu {
@@ -87,6 +87,7 @@ public class Menu {
 					// check xem có bị trùng tên đăng nhập với người khác
 					boolean check = userController.register(user.getUsername());
 					while (true) {
+						// tạo số tk và check xem có trùng với ai không nếu trùng thì add lại
 						String an = getRandomSTK();
 						boolean checkSTK = userController.checkSTK(an);
 						if (checkSTK) {

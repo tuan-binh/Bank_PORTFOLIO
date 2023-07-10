@@ -34,7 +34,7 @@ public class Datatest {
 //		Date oldDate = cal.getTime();
 //		System.out.println(oldDate.getMonth() + 1);
 //
-//		Saving saving = new Saving(1, 1000000, present.getPresent(), present.getLimitMonth(), oldDate, nowDate);
+//		Saving saving = new Saving(1, 1000000, present.getPresent(), present.getLimitMonth(), oldDate, nowDate,false);
 //		System.out.println(saving);
 //		savingController.save(user.getList(), saving);
 //		userController.save(user);
