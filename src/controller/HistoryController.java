@@ -33,4 +33,8 @@ public class HistoryController {
 	public String getNewIdWithNAP(LinkedList<History> list) {
 		return historyService.getNewIdWithNAP(list);
 	}
+	
+	public String getNewIdWithRUT(LinkedList<History> list) {
+		return historyService.getNewIdWithRUT(list);
+	}
 }

@@ -54,7 +54,22 @@ public class MenuUser {
 					break;
 				case 4:
 					// nạp tiền
-					deposit();
+					System.out.println("╔═════════════════╗");
+					System.out.println("║   " + PURPLE + "1. Nạp Tiền   " + BLUE + "║");
+					System.out.println("║   " + PURPLE + "2. Rút Tiền   " + BLUE + "║");
+					System.out.println("╚═════════════════╝");
+					System.out.print(Message.CHOICE);
+					int choose = InputMethods.getInteger();
+					switch (choose) {
+						case 1:
+							deposit();
+							break;
+						case 2:
+							withdrawals();
+							break;
+						default:
+							break;
+					}
 					break;
 				case 5:
 					// history
@@ -176,6 +191,77 @@ public class MenuUser {
 		}
 	}
 	
+	public void withdrawals() {
+		while (true) {
+			showName(data);
+			Navbar.showDeposit();
+			System.out.print(Message.CHOICE);
+			int choice = InputMethods.getInteger();
+			switch (choice) {
+				case 1:
+					if (200000 < data.getMoney()) {
+						minusMoney(200000);
+					} else {
+						System.err.println(Message.NOT_ENOUGH);
+					}
+					break;
+				case 2:
+					if (500000 < data.getMoney()) {
+						minusMoney(500000);
+					} else {
+						System.err.println(Message.NOT_ENOUGH);
+					}
+					break;
+				case 3:
+					if (1000000 < data.getMoney()) {
+						minusMoney(1000000);
+					} else {
+						System.err.println(Message.NOT_ENOUGH);
+					}
+					break;
+				case 4:
+					if (2000000 < data.getMoney()) {
+						minusMoney(2000000);
+					} else {
+						System.err.println(Message.NOT_ENOUGH);
+					}
+					break;
+				case 0:
+					return;
+				default:
+					break;
+			}
+		}
+	}
+	
+	public void addMoney(long money) {
+		System.out.print("Nhập mật khẩu: ");
+		String password = InputMethods.getString();
+		if (password.equals(data.getPassword())) {
+			data.setMoney(data.getMoney() + money);
+			History hisNAP = getMyHistory(historyController.getNewIdWithNAP(data.getHistories()), data, null, money);
+			historyController.save(data.getHistories(), hisNAP);
+			userController.save(data);
+			System.out.println(Message.SUCCESS);
+		} else {
+			System.err.println(Message.YOU_WRONG);
+		}
+	}
+	
+	public void minusMoney(long money) {
+		System.out.print("Nhập mật khẩu: ");
+		String password = InputMethods.getString();
+		if (password.equals(data.getPassword())) {
+			data.setMoney(data.getMoney() - money);
+			History hisRUT = getMyHistory(historyController.getNewIdWithRUT(data.getHistories()), data, null, money);
+			historyController.save(data.getHistories(), hisRUT);
+			userController.save(data);
+			System.out.println(Message.SUCCESS);
+		} else {
+			System.err.println(Message.YOU_WRONG);
+		}
+	}
+	
 	public void watchHistory() {
 		if (data.getHistories().size() == 0) {
 			System.err.println(Message.EMPTY);
@@ -192,7 +278,10 @@ public class MenuUser {
 			if (h.getId().startsWith("R")) {
 				h.contentChanged();
 			}
-			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+			if (h.getId().startsWith("P")) {
+				h.contentWithdrawals();
+			}
+			System.out.println(BLUE + "----------------------------------------------------");
 		}
 		System.out.println();
 		for (History h : data.getHistories()) {
@@ -201,20 +290,6 @@ public class MenuUser {
 			}
 		}
 		userController.save(data);
-	}
-	
-	public void addMoney(long money) {
-		System.out.print("Nhập mật khẩu: ");
-		String password = InputMethods.getString();
-		if (password.equals(data.getPassword())) {
-			data.setMoney(data.getMoney() + money);
-			History hisNAP = getMyHistory(historyController.getNewIdWithNAP(data.getHistories()), data, null, money);
-			historyController.save(data.getHistories(), hisNAP);
-			userController.save(data);
-			System.out.println(Message.SUCCESS);
-		} else {
-			System.err.println(Message.YOU_WRONG);
-		}
 	}
 	
 	public void changeInformation() {

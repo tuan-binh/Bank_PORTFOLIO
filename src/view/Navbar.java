@@ -80,7 +80,7 @@ public class Navbar {
 		System.out.println("┃                " + PURPLE + "1. XEM THÔNG TIN CÁ NHÂN                  " + BLUE + "┃");
 		System.out.println("┃                " + PURPLE + "2. CHUYỂN TIỀN                            " + BLUE + "┃");
 		System.out.println("┃                " + PURPLE + "3. GỬI TIỀN TIẾT KIỆM                     " + BLUE + "┃");
-		System.out.println("┃                " + PURPLE + "4. NẠP TIỀN                               " + BLUE + "┃");
+		System.out.println("┃                " + PURPLE + "4. NẠP TIỀN VÀ RÚT TIỀN                   " + BLUE + "┃");
 		System.out.println("┃                " + PURPLE + "5. XEM BIẾN ĐỘNG SỐ DƯ  " + RED + (String.valueOf(notification).length() == 1 ? (notification == 0 ? "     "+ "             " + BLUE + "┃" : "( " + notification + " )"+ "             " + BLUE + "┃") : (notification == 0 ? "     "+ "             " + BLUE + "┃" : "( " + notification + ")"+ "            " + BLUE + "┃")));
 		System.out.println("┃                " + PURPLE + "6. THAY ĐỔI THÔNG TIN CÁ NHÂN             " + BLUE + "┃");
 		System.out.println("┃                " + PURPLE + "7. THAY ĐỔI MẬT KHẨU                      " + BLUE + "┃");

@@ -19,8 +19,8 @@ public class Datatest {
 	static final SavingController savingController = new SavingController();
 	
 	public static void main(String[] args) {
-//		User admin = new User(1, "john", "admin", "123", 1200000000, Roles.ADMIN);
-//		userController.save(admin);
+		User admin = new User(1, "john", "admin", "123", 1200000000, Roles.ADMIN);
+		userController.save(admin);
 //		User user = userController.findById(2);
 //		List<Saving> list = user.getList();
 //		System.out.println(user);

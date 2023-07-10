@@ -90,4 +90,8 @@ public class History implements Serializable {
 		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
 	
+	public void contentWithdrawals() {
+		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Rút: " + RED + InputMethods.formatNumber().format(money));
+		System.out.println(GREEN + "Lúc: " + RED + time);
+	}
 }

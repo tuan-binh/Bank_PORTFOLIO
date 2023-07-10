@@ -97,12 +97,16 @@ public class MenuAdmin {
 							item.contentChanged();
 							System.out.println(BLUE + "----------------------------------------------------");
 						}
+						if (item.getId().startsWith("P")) {
+							item.contentWithdrawals();
+							System.out.println(BLUE + "----------------------------------------------------");
+						}
 					}
 				}
 			}
 		}
 		if (check) {
-			System.out.println(RED+Message.EMPTY);
+			System.out.println(RED + Message.EMPTY);
 			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		}
 	}
