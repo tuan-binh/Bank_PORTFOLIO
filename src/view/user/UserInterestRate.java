@@ -120,6 +120,7 @@ public class UserInterestRate {
 			case 0:
 				return;
 			default:
+				System.err.println("Try again 0 to 2");
 				break;
 		}
 	}
@@ -150,7 +151,7 @@ public class UserInterestRate {
 				if (money == saving.getMoneySaving()) {
 					result = removeSaving(id);
 				}
-				System.out.println(result);
+//				System.out.println(result);
 				data.setMoney(data.getMoney() + result);
 				saving.setMoneySaving((long) (saving.getMoneySaving() - money));
 				savingController.save(data.getList(), saving);
@@ -184,7 +185,7 @@ public class UserInterestRate {
 	
 	public long removeSaving(int id) {
 		Saving saving = savingController.findById(data.getList(), id);
-		long result = getMoneyAfterSaving(saving.getSentDate(), saving.getDueDate(), saving);
+		long result = saving.getMoneySaving() + getMoneyAfterSaving(saving.getSentDate(), saving.getDueDate(), saving);
 		savingController.delete(data.getList(), id);
 		return result;
 	}
@@ -197,7 +198,7 @@ public class UserInterestRate {
 			if (day == 0) {
 				result = saving.getMoneySaving();
 			}
-			result = (long) (saving.getMoneySaving() * (saving.getPresent() / 365) * day);
+			result = (long) (saving.getMoneySaving() * (saving.getPresent() / 100) * day / 365);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -75,27 +75,35 @@ public class MenuAdmin {
 	}
 	
 	public void deliveryStatistics() {
+		boolean check = true;
 		System.out.print("Nhập ngày muốn tìm: ");
 		int day = InputMethods.getDay();
 		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		for (User user : userController.getAll()) {
 			if (user.getRoles().equals(Roles.USER)) {
-//				List<History> list = new ArrayList<>(user.getHistories());
-				for (History item : user.getHistories()) {
+				List<History> list = new ArrayList<>(user.getHistories());
+				for (History item : list) {
 					if (item.getTime().getDate() == day) {
+						check = false;
 						if (item.getId().startsWith("G")) {
 							item.contentSend();
+							System.out.println(BLUE + "----------------------------------------------------");
 						}
 						if (item.getId().startsWith("N")) {
 							item.contentReceive();
+							System.out.println(BLUE + "----------------------------------------------------");
 						}
 						if (item.getId().startsWith("R")) {
 							item.contentChanged();
+							System.out.println(BLUE + "----------------------------------------------------");
 						}
 					}
-					System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 				}
 			}
+		}
+		if (check) {
+			System.out.println(RED+Message.EMPTY);
+			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		}
 	}
 	

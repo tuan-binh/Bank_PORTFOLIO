@@ -35,18 +35,21 @@ public class MenuUser {
 		System.out.println();
 		while (true) {
 			showName(data);
-			Navbar.MenuUser();
+			Navbar.MenuUser(getNotification());
 			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
 			System.out.println();
 			switch (choice) {
 				case 1:
+					// xem thông tin tài khoản
 					showInformation();
 					break;
 				case 2:
+					// chuyển tiền
 					sentMoneyToUser();
 					break;
 				case 3:
+					// gửi tiền tiết kiệm
 					new UserInterestRate(data, userController, presentController, savingController);
 					break;
 				case 4:
@@ -58,9 +61,11 @@ public class MenuUser {
 					watchHistory();
 					break;
 				case 6:
+					// change tài khoản với tên
 					changeInformation();
 					break;
 				case 7:
+					// change mật khẩu
 					changePassword();
 					break;
 				case 0:
@@ -190,6 +195,12 @@ public class MenuUser {
 			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		}
 		System.out.println();
+		for (History h : data.getHistories()) {
+			if (!h.isStatus()) {
+				h.setStatus(true);
+			}
+		}
+		userController.save(data);
 	}
 	
 	public void addMoney(long money) {
@@ -275,5 +286,15 @@ public class MenuUser {
 		System.out.print("┓");
 		System.out.println();
 		System.out.printf("┃ " + PURPLE + "%s " + BLUE + "┃\n", data.getFullName().toUpperCase());
+	}
+	
+	public int getNotification() {
+		int result = 0;
+		for (History h : data.getHistories()) {
+			if (!h.isStatus()) {
+				++result;
+			}
+		}
+		return result;
 	}
 }

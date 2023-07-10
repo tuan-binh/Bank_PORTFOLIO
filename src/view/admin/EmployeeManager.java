@@ -67,6 +67,7 @@ public class EmployeeManager {
 		} else {
 			System.err.println(Message.YOU_WRONG);
 		}
+		System.out.println(Message.SUCCESS);
 	}
 	
 	public void editEmployee() {
@@ -82,6 +83,7 @@ public class EmployeeManager {
 		newUser.inputData();
 		newUser.setRoles(Roles.EMPLOYEE);
 		userController.save(newUser);
+		System.out.println(Message.SUCCESS);
 	}
 	
 	public void layoffEmployee() {

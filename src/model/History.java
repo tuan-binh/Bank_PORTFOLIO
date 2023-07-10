@@ -13,8 +13,10 @@ public class History implements Serializable {
 	private User user1; // người gửi
 	private User user2; // người nhận
 	private Date time; // thời gian gửi
+	private boolean status;
 	
 	public History() {
+		status = false;
 	}
 	
 	public History(String id, long money, User user1, User user2, Date time) {
@@ -63,6 +65,14 @@ public class History implements Serializable {
 	
 	public void setTime(Date time) {
 		this.time = time;
+	}
+	
+	public boolean isStatus() {
+		return status;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 	public void contentSend() {

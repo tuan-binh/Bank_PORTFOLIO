@@ -84,6 +84,7 @@ public class MenuEmployee {
 		long money = InputMethods.getPositiveLong();
 		user.setMoney(user.getMoney() + money);
 		userController.save(user);
+		System.out.println(Message.SUCCESS);
 	}
 	
 	public void minusMoney(User user) {
@@ -95,6 +96,7 @@ public class MenuEmployee {
 		}
 		user.setMoney(user.getMoney() - money);
 		userController.save(user);
+		System.out.println(Message.SUCCESS);
 	}
 	
 	public void showInformationUser() {
