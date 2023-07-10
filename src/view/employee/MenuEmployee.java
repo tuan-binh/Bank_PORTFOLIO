@@ -39,10 +39,13 @@ public class MenuEmployee {
 					showInformationUser();
 					break;
 				case 3:
-					showInterestRate();
+					sentMoneyToUser();
 					break;
 				case 4:
 					addInterestRateToUser();
+					break;
+				case 5:
+					showInterestRate();
 					break;
 				case 0:
 					return;
@@ -99,7 +102,34 @@ public class MenuEmployee {
 		System.out.println(Message.SUCCESS);
 	}
 	
+	public void sentMoneyToUser() {
+		System.out.print("Nhập vào số tài khoản người dùng: ");
+		String an = InputMethods.getString();
+		User check = null;
+		for (User user : userController.getAll()) {
+			if (user.getAN() != null && user.getAN().equals(an)) {
+				check = user;
+			}
+		}
+		if (check == null) {
+			System.err.println(Message.NOT_FOUND);
+			return;
+		}
+		System.out.print("Nhập vào số tiền bạn muốn chuyển: ");
+		long money = InputMethods.getPositiveLong();
+		if (money < check.getMoney()) {
+			System.err.println(Message.NOT_ENOUGH);
+			return;
+		}
+		check.setMoney(check.getMoney() + money);
+		userController.save(check);
+	}
+	
 	public void showInformationUser() {
+		if (userController.getAll().size() == 0) {
+			System.err.println(Message.EMPTY);
+			return;
+		}
 		System.out.println("============================================================");
 		for (User u : userController.getAll()) {
 			if (u.getRoles().equals(Roles.USER)) {

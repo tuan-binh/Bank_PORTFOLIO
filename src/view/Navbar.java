@@ -67,9 +67,9 @@ public class Navbar {
 	public static void MenuEmployee() {
 		System.out.println(BLUE + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MENU EMPLOYEE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                                                                                     ┃");
-		System.out.println("┃            " + PURPLE + "1. THAY ĐỔI TIỀN NGƯỜI DÙNG       2. HIỂN THỊ NGƯỜI DÙNG                 " + BLUE + "┃");
-		System.out.println("┃            " + PURPLE + "3. HIỂN THỊ LÃI XUẤT              4. THÊM GÓI TIẾT KIẾM CHO NGƯỜI DÙNG   " + BLUE + "┃");
-		System.out.println("┃            " + PURPLE + "0. ĐĂNG XUẤT                                                             " + BLUE + "┃");
+		System.out.println("┃            " + PURPLE + "1. NẠP VÀ RÚT TIỀN NGƯỜI DÙNG     2. HIỂN THỊ NGƯỜI DÙNG                 " + BLUE + "┃");
+		System.out.println("┃            " + PURPLE + "3. CHUYỂN TIỀN CHO NGƯỜI DÙNG     4. THÊM GÓI TIẾT KIẾM CHO NGƯỜI DÙNG   " + BLUE + "┃");
+		System.out.println("┃            " + PURPLE + "5. HIỂN THỊ LÃI XUẤT              0. ĐĂNG XUẤT                           " + BLUE + "┃");
 		System.out.println("┃                                                                                     ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
