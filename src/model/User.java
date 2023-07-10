@@ -14,6 +14,7 @@ public class User implements Serializable {
 	private String fullName;
 	private String username;
 	private String password;
+	private String AN;
 	private long money;
 	private List<Saving> list;
 	private LinkedList<History> histories;
@@ -36,11 +37,12 @@ public class User implements Serializable {
 		this.roles = roles;
 	}
 	
-	public User(int id, String fullName, String username, String password, long money, List<Saving> list, LinkedList<History> histories, Roles roles, boolean status) {
+	public User(int id, String fullName, String username, String password, String AN, long money, List<Saving> list, LinkedList<History> histories, Roles roles, boolean status) {
 		this.id = id;
 		this.fullName = fullName;
 		this.username = username;
 		this.password = password;
+		this.AN = AN;
 		this.money = money;
 		this.list = list;
 		this.histories = histories;
@@ -78,6 +80,14 @@ public class User implements Serializable {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getAN() {
+		return AN;
+	}
+	
+	public void setAN(String AN) {
+		this.AN = AN;
 	}
 	
 	public long getMoney() {
@@ -131,6 +141,6 @@ public class User implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "[ ID: " + RED + id + BLUE + " | Name: " + RED + fullName + BLUE + " | Username: " + RED + username + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(money) + BLUE + " | Status: " + RED + (status ? "Unblock" : "Block") + BLUE + " ]";
+		return "[ ID: " + RED + id + BLUE + " | Name: " + RED + fullName + BLUE + " | Account Number: " + RED + AN + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(money) + BLUE + " | Status: " + RED + (status ? "Unblock" : "Block") + BLUE + " ]";
 	}
 }

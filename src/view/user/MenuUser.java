@@ -93,10 +93,10 @@ public class MenuUser {
 	}
 	
 	public void showInformation() {
-		
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.printf("┃ " + PURPLE + "Name: %50s " + BLUE + "┃", data.getFullName().toUpperCase());
 		System.out.printf("\n┃ " + PURPLE + "Username: %46s " + BLUE + "┃", data.getUsername());
+		System.out.printf("\n┃ " + PURPLE + "Account Number: %40s " + BLUE + "┃", data.getAN());
 		System.out.printf("\n┃ " + PURPLE + "Money: %49s " + BLUE + "┃\n", InputMethods.formatNumber().format(data.getMoney()));
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
@@ -107,11 +107,11 @@ public class MenuUser {
 				System.err.println(Message.NOT_ENOUGH);
 				break;
 			}
-			System.out.print("Nhập vào tên người bạn muốn chuyển đến: ");
-			String username = InputMethods.getString();
+			System.out.print("Nhập vào số tài khoản muốn chuyển đến: ");
+			String an = InputMethods.getString();
 			User check = null;
 			for (User user : userController.getAll()) {
-				if (user.getUsername().equals(username) && user.getRoles().equals(Roles.USER) && !user.getUsername().equals(data.getUsername())) {
+				if (user.getAN() != null && user.getAN().equals(an) && user.getRoles().equals(Roles.USER) && !user.getUsername().equals(data.getUsername())) {
 					check = user;
 				}
 			}

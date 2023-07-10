@@ -94,4 +94,13 @@ public class UserService implements IService<User, Integer> {
 		return true;
 	}
 	
+	public boolean checkSTK(String stk) {
+		for (User u : listUser) {
+			if (u.getAN() != null && u.getAN().equals(stk)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }

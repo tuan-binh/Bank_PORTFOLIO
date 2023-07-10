@@ -44,4 +44,9 @@ public class UserController implements IController<User, Integer> {
 	public boolean register(String username) {
 		return userService.register(username);
 	}
+	
+	public boolean checkSTK(String stk) {
+		return userService.checkSTK(stk);
+	}
+	
 }

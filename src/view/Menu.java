@@ -86,6 +86,14 @@ public class Menu {
 				if (user.getPassword().equals(confirmPassword)) {
 					// check xem có bị trùng tên đăng nhập với người khác
 					boolean check = userController.register(user.getUsername());
+					while (true) {
+						String an = getRandomSTK();
+						boolean checkSTK = userController.checkSTK(an);
+						if (checkSTK) {
+							user.setAN(an);
+							break;
+						}
+					}
 					if (check) {
 						userController.save(user);
 						System.out.println(Message.REGISTER_SUCCESS);
@@ -101,6 +109,14 @@ public class Menu {
 		} else {
 			System.err.println("Tên đăng nhập không được có dấu cách");
 		}
+	}
+	
+	public static String getRandomSTK() {
+		String result = "1001";
+		for (int i = 0; i < 8; i++) {
+			result += String.valueOf((int) Math.ceil(Math.random() * 9));
+		}
+		return result;
 	}
 	
 	public static void forgetPassword() {
