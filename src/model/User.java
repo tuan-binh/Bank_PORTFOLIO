@@ -2,7 +2,10 @@ package model;
 
 import config.InputMethods;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -139,8 +142,10 @@ public class User implements Serializable {
 		this.password = InputMethods.getString();
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "[ ID: " + RED + id + BLUE + " | Name: " + RED + fullName + BLUE + " | Account Number: " + RED + AN + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(money) + BLUE + " | Status: " + RED + (status ? "Unblock" : "Block") + BLUE + " ]";
+		return "ID: " + RED + id + BLUE + " | Name: " + RED + fullName + BLUE + " | Username: " + RED + username + BLUE + " | Password: " + RED + password + BLUE +
+				  "\nAccount Number: " + RED + AN + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(money) + BLUE + " | Status: " + RED + (status ? "Unblock" : "Block") + BLUE;
 	}
 }

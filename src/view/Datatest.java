@@ -8,6 +8,9 @@ import model.Roles;
 import model.Saving;
 import model.User;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +22,7 @@ public class Datatest {
 	static final SavingController savingController = new SavingController();
 	
 	public static void main(String[] args) {
-		User admin = new User(1, "john", "admin", "123", 1200000000, Roles.ADMIN);
+		User admin = new User(1, "john", "admin", getHashCodePassword("123"), 1200000000, Roles.ADMIN);
 		userController.save(admin);
 //		User user = userController.findById(2);
 //		List<Saving> list = user.getList();
@@ -38,5 +41,18 @@ public class Datatest {
 //		System.out.println(saving);
 //		savingController.save(user.getList(), saving);
 //		userController.save(user);
+	}
+	
+	public static String getHashCodePassword(String password) {
+		String result;
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(password.getBytes());
+			byte[] digest = md.digest();
+			result = DatatypeConverter.printHexBinary(digest).toUpperCase();
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+		return result;
 	}
 }

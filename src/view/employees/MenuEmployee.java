@@ -129,13 +129,13 @@ public class MenuEmployee {
 			System.err.println(Message.EMPTY);
 			return;
 		}
-		System.out.println("============================================================");
+		System.out.println("===============================================================================");
 		for (User u : userController.getAll()) {
 			if (u.getRoles().equals(Roles.USER)) {
 				System.out.println(u);
+				System.out.println("===============================================================================");
 			}
 		}
-		System.out.println("============================================================");
 	}
 	
 	public void showInterestRate() {

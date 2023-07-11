@@ -2,6 +2,7 @@ package view.user;
 
 import config.InputMethods;
 import config.Message;
+import config.Validate;
 import controller.HistoryController;
 import controller.PresentController;
 import controller.SavingController;
@@ -9,6 +10,7 @@ import controller.UserController;
 import model.History;
 import model.Roles;
 import model.User;
+import view.Menu;
 import view.Navbar;
 
 import java.sql.SQLOutput;
@@ -126,6 +128,7 @@ public class MenuUser {
 					if (money < data.getMoney()) {
 						System.out.print("Nhập mật khẩu: ");
 						String password = InputMethods.getString();
+						password = Menu.getHashCodePassword(password);
 						if (password.equals(data.getPassword())) {
 							data.setMoney(data.getMoney() - money);
 							check.setMoney(check.getMoney() + money);
@@ -237,6 +240,7 @@ public class MenuUser {
 	public void addMoney(long money) {
 		System.out.print("Nhập mật khẩu: ");
 		String password = InputMethods.getString();
+		password = Menu.getHashCodePassword(password);
 		if (password.equals(data.getPassword())) {
 			data.setMoney(data.getMoney() + money);
 			History hisNAP = getMyHistory(historyController.getNewIdWithNAP(data.getHistories()), data, null, money);
@@ -251,6 +255,7 @@ public class MenuUser {
 	public void minusMoney(long money) {
 		System.out.print("Nhập mật khẩu: ");
 		String password = InputMethods.getString();
+		password = Menu.getHashCodePassword(password);
 		if (password.equals(data.getPassword())) {
 			data.setMoney(data.getMoney() - money);
 			History hisRUT = getMyHistory(historyController.getNewIdWithRUT(data.getHistories()), data, null, money);
@@ -296,9 +301,12 @@ public class MenuUser {
 		User newUser = new User();
 		newUser.setId(data.getId());
 		newUser.setPassword(data.getPassword());
+		newUser.setAN(data.getAN());
 		newUser.setMoney(data.getMoney());
 		newUser.setList(data.getList());
+		newUser.setHistories(data.getHistories());
 		newUser.setRoles(data.getRoles());
+		newUser.setStatus(data.isStatus());
 		System.out.printf("\nNhập tên mới (tên cũ: %s): ", data.getFullName());
 		String name = InputMethods.getString();
 		newUser.setFullName(name);
@@ -307,6 +315,10 @@ public class MenuUser {
 		while (true) {
 			System.out.printf("\nNhập username (username cũ: %s): ", data.getUsername());
 			String username = InputMethods.getString();
+			if (!Validate.username(username)) {
+				System.err.println(Message.YOU_WRONG);
+				return;
+			}
 			for (User u : userController.getAll()) {
 				if (u.getUsername().equals(username) && !u.getUsername().equals(data.getUsername())) {
 					check = false;
@@ -317,7 +329,7 @@ public class MenuUser {
 				userController.save(newUser);
 				break;
 			} else {
-				System.err.println("Tên đã bị trùng");
+				System.err.println("Tên đăng nhập đã bị trùng");
 			}
 		}
 	}
@@ -327,17 +339,33 @@ public class MenuUser {
 		newUser.setId(data.getId());
 		newUser.setFullName(data.getFullName());
 		newUser.setUsername(data.getUsername());
+		newUser.setAN(data.getAN());
 		newUser.setMoney(data.getMoney());
 		newUser.setList(data.getList());
+		newUser.setHistories(data.getHistories());
 		newUser.setRoles(data.getRoles());
+		newUser.setStatus(data.isStatus());
 		while (true) {
 			System.out.print("Nhập vào mật khẩu cũ: ");
 			String oldPassword = InputMethods.getString();
+			oldPassword = Menu.getHashCodePassword(oldPassword);
 			if (oldPassword.equals(data.getPassword())) {
 				System.out.print("Nhập mật khẩu mới: ");
 				String newPassword = InputMethods.getString();
+				if (Validate.password(newPassword)) {
+					newPassword = Menu.getHashCodePassword(newPassword);
+				} else {
+					System.err.println(Message.YOU_WRONG);
+					break;
+				}
 				System.out.print("Xác nhận mật khẩu: ");
 				String confirmPassword = InputMethods.getString();
+				if (Validate.password(confirmPassword)) {
+					confirmPassword = Menu.getHashCodePassword(confirmPassword);
+				} else {
+					System.err.println(Message.YOU_WRONG);
+					break;
+				}
 				if (newPassword.equals(confirmPassword)) {
 					newUser.setPassword(newPassword);
 					data = newUser;

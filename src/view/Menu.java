@@ -13,6 +13,10 @@ import view.admin.MenuAdmin;
 import view.employees.MenuEmployee;
 import view.user.MenuUser;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Menu {
 	static final UserController userController = new UserController();
 	static final PresentController presentController = new PresentController();
@@ -48,7 +52,8 @@ public class Menu {
 		System.out.print("Nhập tên đăng nhập : ");
 		String username = InputMethods.getString();
 		System.out.print("Nhập mật khẩu : ");
-		String password = InputMethods.getString();
+		String Password = InputMethods.getString();
+		String password = getHashCodePassword(Password);
 		User user = userController.login(username, password);
 		if (user == null) {
 			System.err.println(Message.SIGNIN_FAILED);
@@ -77,12 +82,14 @@ public class Menu {
 		user.setId(userController.getNewId());
 		user.inputData();
 		System.out.print("Xác nhận mật khẩu: ");
-		String confirmPassword = InputMethods.getString();
+		String Password = InputMethods.getString();
+		String confirmPassword = getHashCodePassword(Password);
 		// check username
 		if (Validate.username(user.getUsername())) {
 			// check password
 			if (Validate.password(user.getPassword())) {
 				// check 2 password có trùng nhau không
+				user.setPassword(getHashCodePassword(user.getPassword()));
 				if (user.getPassword().equals(confirmPassword)) {
 					// check xem có bị trùng tên đăng nhập với người khác
 					boolean check = userController.register(user.getUsername());
@@ -112,6 +119,19 @@ public class Menu {
 		}
 	}
 	
+	public static String getHashCodePassword(String password) {
+		String result;
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(password.getBytes());
+			byte[] digest = md.digest();
+			result = DatatypeConverter.printHexBinary(digest).toUpperCase();
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+		return result;
+	}
+	
 	public static String getRandomSTK() {
 		String result = "1001";
 		for (int i = 0; i < 8; i++) {
@@ -135,9 +155,10 @@ public class Menu {
 			return;
 		}
 		String newPassword = newPassword();
+		System.out.println("Mật khẩu mới là: " + newPassword);
+		newPassword = getHashCodePassword(newPassword);
 		myUser.setPassword(newPassword);
 		userController.save(myUser);
-		System.out.println("Mật khẩu mới là: " + newPassword);
 	}
 	
 	public static String newPassword() {

@@ -136,6 +136,7 @@ public class InputMethods {
 		while (true) {
 			long result = getLong();
 			if (result < 0) {
+				System.err.println("Vui lòng nhập số dương");
 				continue;
 			}
 			return result;
@@ -146,6 +147,7 @@ public class InputMethods {
 		while (true) {
 			double result = getDouble();
 			if (result < 0 || result > 10) {
+				System.err.println("Nhập sai rồi từ 1 đến 10");
 				continue;
 			}
 			return result;

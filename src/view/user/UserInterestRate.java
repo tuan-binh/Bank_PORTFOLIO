@@ -8,6 +8,7 @@ import controller.UserController;
 import model.Present;
 import model.Saving;
 import model.User;
+import view.Menu;
 import view.Navbar;
 
 import java.util.Calendar;
@@ -80,6 +81,7 @@ public class UserInterestRate {
 			if (money <= data.getMoney()) {
 				System.out.print("Nhập mật khẩu: ");
 				String pass = InputMethods.getString();
+				pass = Menu.getHashCodePassword(pass);
 				if (pass.equals(data.getPassword())) {
 					saving.setMoneySaving(money);
 					data.setMoney(data.getMoney() - money);
@@ -89,6 +91,7 @@ public class UserInterestRate {
 					saving.setDueDate(newDate);
 					savingController.save(data.getList(), saving);
 					userController.save(data);
+					System.out.println(Message.SUCCESS);
 				} else {
 					System.err.println(Message.YOU_WRONG);
 				}
@@ -143,6 +146,7 @@ public class UserInterestRate {
 			}
 			System.out.print("Nhập mật khẩu: ");
 			String pass = InputMethods.getString();
+			pass = Menu.getHashCodePassword(pass);
 			if (pass.equals(data.getPassword())) {
 				long result = 0;
 				if (money < saving.getMoneySaving()) {
@@ -171,6 +175,7 @@ public class UserInterestRate {
 			while (true) {
 				System.out.print("Nhập mật khẩu: ");
 				String pass = InputMethods.getString();
+				pass = Menu.getHashCodePassword(pass);
 				if (pass.equals(data.getPassword())) {
 					long result = removeSaving(id);
 					data.setMoney(data.getMoney() + result);

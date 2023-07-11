@@ -6,6 +6,7 @@ import config.Validate;
 import controller.UserController;
 import model.Roles;
 import model.User;
+import view.Menu;
 import view.Navbar;
 
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class EmployeeManager {
 		employee.setRoles(Roles.EMPLOYEE);
 		if (Validate.username(employee.getUsername())) {
 			if (Validate.password(employee.getPassword())) {
+				employee.setPassword(Menu.getHashCodePassword(employee.getPassword()));
 				boolean check = userController.register(employee.getUsername());
 				if (check) {
 					userController.save(employee);
@@ -110,7 +112,7 @@ public class EmployeeManager {
 				}
 			}
 		}
-		if(!check) {
+		if (!check) {
 			System.err.println(Message.NOT_FOUND);
 		}
 		System.out.println("============================================================");
