@@ -5,6 +5,7 @@ import config.Message;
 import controller.UserController;
 import model.Roles;
 import model.User;
+import view.Menu;
 import view.Navbar;
 
 import java.util.ArrayList;
@@ -103,9 +104,10 @@ public class UserManager {
 			return;
 		}
 		String newPassword = newPassword();
+		System.out.println("Mật khẩu mới: " + newPassword);
+		newPassword = Menu.getHashCodePassword(newPassword);
 		user.setPassword(newPassword);
 		userController.save(user);
-		System.out.println("Mật khẩu mới: " + newPassword);
 	}
 	
 	public String newPassword() {
