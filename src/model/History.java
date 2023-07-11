@@ -76,22 +76,22 @@ public class History implements Serializable {
 	}
 	
 	public void contentSend() {
-		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Gửi: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Đến tài khoản: " + RED + user2.getUsername().toUpperCase());
+		System.out.println("( " + RED + user1.getFullName().toUpperCase() + BLUE + " )" + GREEN + " Đã Gửi: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Đến tài khoản: " + BLUE + "( " + RED + user2.getAN() + BLUE + " )");
 		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
 	
 	public void contentReceive() {
-		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Nhận: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Từ tài khoản: " + RED + user2.getUsername().toUpperCase());
+		System.out.println("( " + RED + user1.getFullName().toUpperCase() + BLUE + " )" + GREEN + " Đã Nhận: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Từ tài khoản: " + BLUE + "( " + RED + user2.getAN() + BLUE + " )");
 		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
 	
 	public void contentChanged() {
-		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Nạp: " + RED + InputMethods.formatNumber().format(money));
+		System.out.println("( " + RED + user1.getFullName().toUpperCase() + BLUE + " )" + GREEN + " Đã Nạp: " + RED + InputMethods.formatNumber().format(money));
 		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
 	
 	public void contentWithdrawals() {
-		System.out.println(RED + user1.getUsername().toUpperCase() + GREEN + " Đã Rút: " + RED + InputMethods.formatNumber().format(money));
+		System.out.println("( " + RED + user1.getFullName().toUpperCase() + BLUE + " )" + GREEN + " Đã Rút: " + RED + InputMethods.formatNumber().format(money));
 		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
 }

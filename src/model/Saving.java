@@ -77,7 +77,7 @@ public class Saving implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "ID: " + RED + id + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(moneySaving) + BLUE + " | present: " + RED + present + BLUE + "% / năm | month: " + RED + month + BLUE +
+		return "ID: " + RED + id + BLUE + " | Money: " + RED + InputMethods.formatNumber().format(moneySaving) + BLUE + " | present: " + RED + present + BLUE + " % / năm | month: " + RED + month + BLUE +
 				  "\nSentDate: " + RED + sentDate + BLUE +
 				  "\nDueDate: " + RED + dueDate + BLUE;
 	}

@@ -105,7 +105,7 @@ public class EmployeeManager {
 		boolean check = false;
 		System.out.println("============================================================");
 		for (User u : userController.getAll()) {
-			if (u.getFullName().toLowerCase().contains(text.toLowerCase())) {
+			if (u.getFullName().toLowerCase().contains(text.trim().toLowerCase())) {
 				if (u.getRoles().equals(Roles.EMPLOYEE)) {
 					System.out.println(u);
 					check = true;

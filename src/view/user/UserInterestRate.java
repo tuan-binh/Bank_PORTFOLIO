@@ -189,8 +189,9 @@ public class UserInterestRate {
 	}
 	
 	public long removeSaving(int id) {
+		Date date = new Date();
 		Saving saving = savingController.findById(data.getList(), id);
-		long result = saving.getMoneySaving() + getMoneyAfterSaving(saving.getSentDate(), saving.getDueDate(), saving);
+		long result = saving.getMoneySaving() + getMoneyAfterSaving(saving.getSentDate(), date, saving);
 		savingController.delete(data.getList(), id);
 		return result;
 	}

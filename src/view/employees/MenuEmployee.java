@@ -9,6 +9,7 @@ import model.Present;
 import model.Roles;
 import model.Saving;
 import model.User;
+import view.Menu;
 import view.Navbar;
 
 import java.util.Calendar;
@@ -18,11 +19,13 @@ import static config.ColorConsole.BLUE;
 import static config.ColorConsole.PURPLE;
 
 public class MenuEmployee {
+	private User data;
 	private UserController userController;
 	private PresentController presentController;
 	private SavingController savingController;
 	
-	public MenuEmployee(UserController userController, PresentController presentController, SavingController savingController) {
+	public MenuEmployee(User data, UserController userController, PresentController presentController, SavingController savingController) {
+		this.data = data;
 		this.userController = userController;
 		this.presentController = presentController;
 		this.savingController = savingController;
@@ -45,6 +48,9 @@ public class MenuEmployee {
 					break;
 				case 5:
 					showInterestRate();
+					break;
+				case 6:
+					changePassword();
 					break;
 				case 0:
 					return;
@@ -194,5 +200,27 @@ public class MenuEmployee {
 			}
 		}
 		
+	}
+	
+	public void changePassword() {
+		System.out.print("Nhập mật khẩu cũ: ");
+		String oldPassword = InputMethods.getString();
+		oldPassword = Menu.getHashCodePassword(oldPassword);
+		if (oldPassword.equals(data.getPassword())) {
+			System.out.print("Nhập mật khẩu mới: ");
+			String newPassword = InputMethods.getString();
+			System.out.print("Xác nhận mật khẩu: ");
+			String confirmPassword = InputMethods.getString();
+			if(newPassword.equals(confirmPassword)) {
+				newPassword = Menu.getHashCodePassword(newPassword);
+				data.setPassword(newPassword);
+				userController.save(data);
+				System.out.println(Message.SUCCESS);
+			} else {
+				System.err.println(Message.YOU_WRONG);
+			}
+		} else {
+			System.err.println(Message.YOU_WRONG);
+		}
 	}
 }

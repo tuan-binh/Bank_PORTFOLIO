@@ -63,7 +63,7 @@ public class Menu {
 				new MenuAdmin(user, userController, presentController);
 			} else if (user.getRoles().equals(Roles.EMPLOYEE)) {
 				// employee
-				new MenuEmployee(userController, presentController, savingController);
+				new MenuEmployee(user, userController, presentController, savingController);
 			} else {
 				if (user.isStatus()) {
 					// user open

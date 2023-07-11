@@ -72,7 +72,7 @@ public class UserManager {
 		boolean check = true;
 		System.out.println("============================================================");
 		for (User u : userController.getAll()) {
-			if (u.getFullName().toLowerCase().contains(text.toLowerCase()) && u.getRoles().equals(Roles.USER)) {
+			if (u.getFullName().toLowerCase().contains(text.trim().toLowerCase()) && u.getRoles().equals(Roles.USER)) {
 				System.out.println(u);
 				check = false;
 			}
