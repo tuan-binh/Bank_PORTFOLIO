@@ -3,7 +3,7 @@ package config;
 import static config.ColorConsole.*;
 
 public class Message {
-	public static final String NOT_FOUND = "not found";
+	public static final String NOT_FOUND = "not found...";
 	public static final String DELETE_SUCCESS = GREEN + "deleted successfully...";
 	public static final String UPDATE_SUCCESS = GREEN + "updated successfully...";
 	public static final String CREATE_SUCCESS = GREEN + "created successfully...";

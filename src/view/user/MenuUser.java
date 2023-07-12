@@ -59,7 +59,6 @@ public class MenuUser {
 					System.out.println("╔═════════════════╗");
 					System.out.println("║   " + PURPLE + "1. Nạp Tiền   " + BLUE + "║");
 					System.out.println("║   " + PURPLE + "2. Rút Tiền   " + BLUE + "║");
-//					System.out.println("║   " + PURPLE + "0. Thoát   " + BLUE + "║");
 					System.out.println("╚═════════════════╝");
 					System.out.print(Message.CHOICE);
 					int choose = InputMethods.getInteger();
@@ -372,4 +371,5 @@ public class MenuUser {
 		}
 		return result;
 	}
+	
 }
