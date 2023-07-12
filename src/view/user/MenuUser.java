@@ -76,7 +76,7 @@ public class MenuUser {
 					break;
 				case 5:
 					// history
-					watchHistory();
+					new WatchHistories(data,userController);
 					break;
 				case 6:
 					// change tài khoản với tên
@@ -267,36 +267,6 @@ public class MenuUser {
 		} else {
 			System.err.println(Message.YOU_WRONG);
 		}
-	}
-	
-	public void watchHistory() {
-		if (data.getHistories().size() == 0) {
-			System.err.println(Message.EMPTY);
-			return;
-		}
-		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-		for (History h : data.getHistories()) {
-			if (h.getId().startsWith("G")) {
-				h.contentSend();
-			}
-			if (h.getId().startsWith("N")) {
-				h.contentReceive();
-			}
-			if (h.getId().startsWith("R")) {
-				h.contentChanged();
-			}
-			if (h.getId().startsWith("P")) {
-				h.contentWithdrawals();
-			}
-			System.out.println(BLUE + "----------------------------------------------------");
-		}
-		System.out.println();
-		for (History h : data.getHistories()) {
-			if (!h.isStatus()) {
-				h.setStatus(true);
-			}
-		}
-		userController.save(data);
 	}
 	
 	public void changeInformation() {
