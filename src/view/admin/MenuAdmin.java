@@ -8,10 +8,6 @@ import model.History;
 import model.Roles;
 import model.User;
 import view.Navbar;
-import view.admin.EmployeeManager;
-import view.admin.InterestRateManager;
-import view.admin.MoneyManager;
-import view.admin.UserManager;
 
 import java.util.*;
 
@@ -78,7 +74,7 @@ public class MenuAdmin {
 		boolean check = true;
 		System.out.print("Nhập ngày muốn tìm: ");
 		int day = InputMethods.getDay();
-		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		for (User user : userController.getAll()) {
 			if (user.getRoles().equals(Roles.USER)) {
 				List<History> list = new ArrayList<>(user.getHistories());
@@ -87,20 +83,17 @@ public class MenuAdmin {
 						check = false;
 						if (item.getId().startsWith("G")) {
 							item.contentSend();
-							System.out.println(BLUE + "----------------------------------------------------");
 						}
 						if (item.getId().startsWith("N")) {
 							item.contentReceive();
-							System.out.println(BLUE + "----------------------------------------------------");
 						}
 						if (item.getId().startsWith("R")) {
 							item.contentChanged();
-							System.out.println(BLUE + "----------------------------------------------------");
 						}
 						if (item.getId().startsWith("P")) {
 							item.contentWithdrawals();
-							System.out.println(BLUE + "----------------------------------------------------");
 						}
+						System.out.println("-------------------------------------------------------------");
 					}
 				}
 			}
@@ -110,5 +103,4 @@ public class MenuAdmin {
 			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		}
 	}
-	
 }
