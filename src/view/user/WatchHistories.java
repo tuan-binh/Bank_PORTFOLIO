@@ -33,9 +33,9 @@ public class WatchHistories {
 				return;
 			}
 			showHistories();
-			System.out.println("┣━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┫");
-			System.out.printf("┃    <<( " + RED + "1 " + BLUE + "(<<   ┃      " + RED + "%d " + BLUE + "/ " + RED + "%d      " + BLUE + "┃    >>) " + RED + "2 " + BLUE + ")>>  ┃\n", page, pages);
-			System.out.println("┗━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛");
+			System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┫");
+			System.out.printf("┃       <<(" + RED + " 1 " + BLUE + ")<<        ┃  " + RED + "%d " + GREEN + "/ " + RED + "%d  " + BLUE + "┃        >>(" + RED + " 2 " + BLUE + ")>>       ┃\n", page, pages);
+			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━┛");
 			System.out.print(Message.CHOICE);
 			int choice = InputMethods.getInteger();
 			switch (choice) {
@@ -62,7 +62,7 @@ public class WatchHistories {
 	
 	public void showHistories() {
 		List<History> list = new ArrayList<>(data.getHistories());
-		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+		System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		for (int i = count; i < myPage; i++) {
 			try {
 				if (list.get(i).getId().startsWith("G")) {
@@ -77,7 +77,7 @@ public class WatchHistories {
 				if (list.get(i).getId().startsWith("P")) {
 					list.get(i).contentWithdrawals();
 				}
-				System.out.println(BLUE + "----------------------------------------------------");
+				System.out.println(BLUE + "-------------------------------------------------------------");
 			} catch (IndexOutOfBoundsException e) {
 			
 			}
