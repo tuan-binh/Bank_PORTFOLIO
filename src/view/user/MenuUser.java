@@ -284,8 +284,8 @@ public class MenuUser {
 		String name = InputMethods.getString();
 		newUser.setFullName(name);
 		data.setFullName(name);
-		boolean check = true;
 		while (true) {
+			boolean check = false;
 			System.out.printf("\nNhập username (username cũ: %s): ", data.getUsername());
 			String username = InputMethods.getString();
 			if (!Validate.username(username)) {
@@ -293,11 +293,13 @@ public class MenuUser {
 				return;
 			}
 			for (User u : userController.getAll()) {
-				if (!u.getUsername().equals(data.getUsername()) && u.getUsername().equals(username)) {
-					check = false;
+				if (!u.getUsername().equals(username)) {
+					if (u.getUsername().equals(data.getUsername())) {
+						check = true;
+					}
 				}
 			}
-			if (check) {
+			if (!check) {
 				newUser.setUsername(username);
 				userController.save(newUser);
 				break;
