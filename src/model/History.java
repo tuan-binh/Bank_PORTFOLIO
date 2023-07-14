@@ -94,4 +94,15 @@ public class History implements Serializable {
 		System.out.println("( " + RED + user1.getFullName().toUpperCase() + BLUE + " )" + GREEN + " Đã Rút: " + RED + InputMethods.formatNumber().format(money));
 		System.out.println(GREEN + "Lúc: " + RED + time);
 	}
+	
+	public void contentSaving() {
+		System.out.println("( " + RED + user1.getFullName().toUpperCase() + BLUE + " )" + GREEN + " Đã Gửi: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Vào Sổ Tiết Kiệm");
+		System.out.println(GREEN + "Lúc: " + RED + time);
+	}
+	
+	public void contentRUTSavings() {
+		System.out.println("( " + RED + user1.getFullName().toUpperCase() + BLUE + " )" + GREEN + " Đã Rút: " + RED + InputMethods.formatNumber().format(money) + GREEN + " Vào Sổ Tiết Kiệm");
+		System.out.println(GREEN + "Lúc: " + RED + time);
+	}
+	
 }

@@ -182,7 +182,7 @@ public class MenuEmployee {
 				Saving saving = new Saving();
 				saving.setId(savingController.getNewId(user.getList()));
 				System.out.print("Nhập vào số tiền muốn gửi: ");
-				long money = InputMethods.getLong();
+				long money = InputMethods.getPositiveLong();
 				if (money <= user.getMoney()) {
 					saving.setMoneySaving(money);
 					user.setMoney((long) (user.getMoney() - money));

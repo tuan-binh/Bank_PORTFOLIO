@@ -77,6 +77,12 @@ public class WatchHistories {
 				if (list.get(i).getId().startsWith("P")) {
 					list.get(i).contentWithdrawals();
 				}
+				if (list.get(i).getId().startsWith("S")) {
+					list.get(i).contentSaving();
+				}
+				if (list.get(i).getId().startsWith("K")) {
+					list.get(i).contentRUTSavings();
+				}
 				System.out.println(BLUE + "-------------------------------------------------------------");
 			} catch (IndexOutOfBoundsException e) {
 			

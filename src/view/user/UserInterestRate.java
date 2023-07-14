@@ -2,9 +2,11 @@ package view.user;
 
 import config.InputMethods;
 import config.Message;
+import controller.HistoryController;
 import controller.PresentController;
 import controller.SavingController;
 import controller.UserController;
+import model.History;
 import model.Present;
 import model.Saving;
 import model.User;
@@ -19,12 +21,14 @@ public class UserInterestRate {
 	private UserController userController;
 	private PresentController presentController;
 	private SavingController savingController;
+	private HistoryController historyController;
 	
-	public UserInterestRate(User data, UserController userController, PresentController presentController, SavingController savingController) {
+	public UserInterestRate(User data, UserController userController, PresentController presentController, SavingController savingController, HistoryController historyController) {
 		this.data = data;
 		this.userController = userController;
 		this.presentController = presentController;
 		this.savingController = savingController;
+		this.historyController = historyController;
 		while (true) {
 			MenuUser.showName(data);
 			Navbar.UserInterestRate();
@@ -73,8 +77,8 @@ public class UserInterestRate {
 			Saving saving = new Saving();
 			saving.setId(savingController.getNewId(data.getList()));
 			System.out.print("Nhập vào số tiền: ");
-			long money = InputMethods.getLong();
-			if (money == 0) {
+			long money = InputMethods.getPositiveLong();
+			if (money <= 0) {
 				System.err.println(Message.YOU_WRONG);
 				break;
 			}
@@ -89,6 +93,8 @@ public class UserInterestRate {
 					saving.setMonth(present.getLimitMonth());
 					saving.setSentDate(date);
 					saving.setDueDate(newDate);
+					History gui = MenuUser.getMyHistory(historyController.getNewIdWithSaving(data.getHistories()), data, null, money);
+					historyController.save(data.getHistories(), gui);
 					savingController.save(data.getList(), saving);
 					userController.save(data);
 					System.out.println(Message.SUCCESS);
@@ -139,7 +145,11 @@ public class UserInterestRate {
 		}
 		while (true) {
 			System.out.print("Nhập vào số tiền: ");
-			double money = InputMethods.getPositiveLong();
+			long money = InputMethods.getPositiveLong();
+			if (money > saving.getMoneySaving()) {
+				System.err.println(Message.YOU_WRONG);
+				break;
+			}
 			if (money == 0) {
 				System.err.println(Message.YOU_WRONG);
 				break;
@@ -155,6 +165,8 @@ public class UserInterestRate {
 				if (money == saving.getMoneySaving()) {
 					result = removeSaving(id);
 				}
+				History rut = MenuUser.getMyHistory(historyController.getNewIdWithRUTSavings(data.getHistories()), data, null, result);
+				historyController.save(data.getHistories(), rut);
 //				System.out.println(result);
 				data.setMoney(data.getMoney() + result);
 				saving.setMoneySaving((long) (saving.getMoneySaving() - money));
@@ -202,7 +214,7 @@ public class UserInterestRate {
 			long dayDiff = date2.getTime() - date1.getTime();
 			long day = dayDiff / (24 * 60 * 60 * 1000);
 			if (day == 0) {
-				result = saving.getMoneySaving();
+				return 0;
 			}
 			result = (long) (saving.getMoneySaving() * (saving.getPresent() / 100) * day / 365);
 		} catch (Exception e) {

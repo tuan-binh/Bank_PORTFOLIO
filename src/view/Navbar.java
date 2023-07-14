@@ -6,7 +6,7 @@ import static config.ColorConsole.*;
 
 public class Navbar {
 	public static void Menu() {
-		System.out.println(BLUE + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━ BANK ━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+		System.out.println(BLUE + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━ MY BANK ━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃                           ┃                             ┃                          ┃                          ┃");
 		System.out.println("┃        " + PURPLE + "1. ĐĂNG NHẬP       " + BLUE + "┃          " + PURPLE + "2. ĐĂNG KÝ         " + BLUE + "┃     " + PURPLE + "3. QUÊN MẬT KHẨU     " + BLUE + "┃        " + PURPLE + "0. THOÁT          " + BLUE + "┃");
 		System.out.println("┃                           ┃                             ┃                          ┃                          ┃");

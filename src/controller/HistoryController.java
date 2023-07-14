@@ -37,4 +37,12 @@ public class HistoryController {
 	public String getNewIdWithRUT(LinkedList<History> list) {
 		return historyService.getNewIdWithRUT(list);
 	}
+	
+	public String getNewIdWithSaving(LinkedList<History> list) {
+		return historyService.getNewIdWithSaving(list);
+	}
+	
+	public String getNewIdWithRUTSavings(LinkedList<History> list) {
+		return historyService.getNewIdWithRUTSavings(list);
+	}
 }

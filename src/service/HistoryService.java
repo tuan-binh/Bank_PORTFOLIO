@@ -141,4 +141,58 @@ public class HistoryService {
 		return id;
 	}
 	
+	public String getNewIdWithSaving(LinkedList<History> list) {
+		String id = "S";
+		int idMax = 0;
+		List<History> newList = new ArrayList<>(list);
+		for (History h : newList) {
+			if (h.getId().startsWith("S")) {
+				int myId = Integer.parseInt(h.getId().replace("S", "0"));
+				if (idMax < myId) {
+					idMax = myId;
+				}
+			}
+		}
+		idMax += 1;
+		String newId = Integer.toString(idMax);
+		if (newId.length() == 1) {
+			id += "0" + 0 + newId;
+		}
+		if (newId.length() == 2) {
+			id += "0" + newId;
+		}
+		if (newId.length() == 3) {
+			id = newId;
+		}
+		
+		return id;
+	}
+	
+	public String getNewIdWithRUTSavings(LinkedList<History> list) {
+		String id = "K";
+		int idMax = 0;
+		List<History> newList = new ArrayList<>(list);
+		for (History h : newList) {
+			if (h.getId().startsWith("K")) {
+				int myId = Integer.parseInt(h.getId().replace("K", "0"));
+				if (idMax < myId) {
+					idMax = myId;
+				}
+			}
+		}
+		idMax += 1;
+		String newId = Integer.toString(idMax);
+		if (newId.length() == 1) {
+			id += "0" + 0 + newId;
+		}
+		if (newId.length() == 2) {
+			id += "0" + newId;
+		}
+		if (newId.length() == 3) {
+			id = newId;
+		}
+		
+		return id;
+	}
+	
 }

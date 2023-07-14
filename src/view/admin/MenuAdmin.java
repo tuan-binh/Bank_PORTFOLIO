@@ -93,6 +93,12 @@ public class MenuAdmin {
 						if (item.getId().startsWith("P")) {
 							item.contentWithdrawals();
 						}
+						if (item.getId().startsWith("S")) {
+							item.contentSaving();
+						}
+						if (item.getId().startsWith("K")) {
+							item.contentRUTSavings();
+						}
 						System.out.println("-------------------------------------------------------------");
 					}
 				}
@@ -100,7 +106,7 @@ public class MenuAdmin {
 		}
 		if (check) {
 			System.out.println(RED + Message.EMPTY);
-			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+			System.out.println(BLUE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 		}
 	}
 }

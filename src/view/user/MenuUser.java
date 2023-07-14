@@ -52,7 +52,7 @@ public class MenuUser {
 					break;
 				case 3:
 					// gửi tiền tiết kiệm
-					new UserInterestRate(data, userController, presentController, savingController);
+					new UserInterestRate(data, userController, presentController, savingController, historyController);
 					break;
 				case 4:
 					// nạp tiền
@@ -75,7 +75,7 @@ public class MenuUser {
 					break;
 				case 5:
 					// history
-					new WatchHistories(data,userController);
+					new WatchHistories(data, userController);
 					break;
 				case 6:
 					// change tài khoản với tên
@@ -157,7 +157,7 @@ public class MenuUser {
 		}
 	}
 	
-	public History getMyHistory(String id, User user1, User user2, long money) {
+	public static History getMyHistory(String id, User user1, User user2, long money) {
 		Date date = new Date();
 		History history = new History();
 		history.setId(id);
@@ -190,6 +190,7 @@ public class MenuUser {
 				case 0:
 					return;
 				default:
+					System.err.println(Message.YOU_WRONG);
 					break;
 			}
 		}
@@ -233,6 +234,7 @@ public class MenuUser {
 				case 0:
 					return;
 				default:
+					System.err.println(Message.YOU_WRONG);
 					break;
 			}
 		}
@@ -291,7 +293,7 @@ public class MenuUser {
 				return;
 			}
 			for (User u : userController.getAll()) {
-				if (u.getUsername().equals(username) && !u.getUsername().equals(data.getUsername())) {
+				if (!u.getUsername().equals(data.getUsername()) && u.getUsername().equals(username)) {
 					check = false;
 				}
 			}
